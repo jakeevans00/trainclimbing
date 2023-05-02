@@ -1,6 +1,6 @@
 # Notes from CS 260
 
-### Github & Git
+## Github & Git
 
 **Different Git commands**
 
@@ -19,3 +19,23 @@
 - Show off cool colors with `#ffffff`
 - Mention people with @jake
   > Use for quotes
+
+## DNS & Route 53
+
+Domain Name Servers convert human-readable domain names into IP addresses. We can lease domain names using services such as Route 53.
+
+- Tuturial
+  - Enter AWS management console
+  - Search Route 53
+  - Register new Domain
+  - Once completed, check hosted zones to create DNS records for your domain name
+
+## Caddy
+
+Caddy is a web service that listens for HTTP requests and routes them (gateway).
+Services used in the class:
+
+- Creation of web certificates
+- Serving static files
+- Gateway for subdomain requests
+  ![Caddy overview](static/img/Caddy.png)
