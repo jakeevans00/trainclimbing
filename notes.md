@@ -39,3 +39,12 @@ Services used in the class:
 - Serving static files
 - Gateway for subdomain requests
   ![Caddy overview](static/img/Caddy.png)
+
+**Encryption**
+Before 2014, it was costly to acquire and renew certificates. Since the creation of the non-profit "Let's Encrypt", anyone can sign and renew a certificate for free.
+This has made the internet a far safer place.
+
+## Deploying the Application
+
+In this class, we'll be deploying using a script from our server. For now it looks like this:
+`./deployService.sh -k ~/prod.pem -h trainclimbing.com -s simon`
