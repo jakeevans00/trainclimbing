@@ -16,7 +16,6 @@ We've all experienced the frustration of hitting a plateau 😔. Usually, this i
 
 ### Key Features:
 
-<span style="color:#9bfae4">
 - Secure authentication over HTTPS
 - Home page with live forum for sharing beta
 - Ability to choose between 2 training plans
@@ -25,7 +24,6 @@ We've all experienced the frustration of hitting a plateau 😔. Usually, this i
 - User journal entries are persistently stored
 - Ability for admin to update training plans
 - CRUD user functionality
-</span>
 
 ### Technologies:
 
