@@ -4,15 +4,11 @@
 
 **Creator of HTML**
 Tim Berners Lee: Wrote final version of HTML in 1993
-
 **Creator of CSS**
 Hkon Wium Lie: 1994 the idea was proposed
 
 **Creator of JS**
 Brandon Eich: Busted it out in a weekend in 1995
-
-**Creator of Linux**
-Linus Torvalds: Took a weekend to write git. "Talk is cheao. Show me the code"
 
 ## Github & Git
 
@@ -62,40 +58,3 @@ This has made the internet a far safer place.
 
 In this class, we'll be deploying using a script from our server. For now it looks like this:
 `./deployService.sh -k ~/prod.pem -h trainclimbing.com -s simon`
-
-## HTML
-
-Use tags to define the structure and provide for user inputes on a web page.
-
-##### Structure Tags
-
-- `html` - Specify the type of document
-- `head` - Header Information
-- `body` - Body of webpage
-- `script` - JavaScript reference
-- `nav` - Navigational Inputs
-- `header` - Header of main content
-- `footer` - Footer of main content
-- `main` - Main content of page
-- `aside` - Aside content of main content
-- `span` - Inline content
-- `include` - External content reference
-- `h1-9` - Different sized headers
-- `b` - Bring attention
-- `svg` - Scalable vector graphic content
-- `iframe` - Inline frame of HTML page
-- `form` - Input container & submission
-- `input` - Multiple types of user input
-  ![Input_Types](static/img/InputTypes.png)
-- `select` - Selection dropdown
-- `textarea` - Multiline text input
-- `output` - Output of input
-
-##### Media Tags
-
-- `img`, `audio`, `video` - simple references to external file
-- `svg`, `canvas` - contain code to render a visual image that can be animated
-
-##### Input Tags
-
-- `label` - Information about input tag
