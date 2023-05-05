@@ -7,3 +7,4 @@
 - `git commit -m ""` (Commit staged files with message)
 - `git push` (Push local changes up to github repo)
 - `git pull` (Do before pushing! Pull changes from remote repo)
+- `git revert HEAD~x..HEAD` - Revert x commits
