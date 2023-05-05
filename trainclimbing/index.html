@@ -6,11 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#37718E" />
     <title>Home</title>
-    <link rel="icon" href="carabiner.png" />
+    <link rel="icon" type="image/ico" href="/trainclimbing/favicon2.ico" />
   </head>
   <body>
-    <main>
+    <header>
       <h1>Train Climbing</h1>
+
+      <!--Navigation Elements-->
+      <menu>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="pages/train.html">Training Plan</a></li>
+        <li><a href="pages/progress.html">View Progress</a></li>
+        <li><a href="pages/community.html">Community</a></li>
+        <li><a href="about.html">About</a></li>
+      </menu>
+      <hr />
+    </header>
+
+    <main>
+      <h1>Welcome!</h1>
+      <i>Login to start training today!</i>
+      <br /><br />
+      <form method="post" action="pages/train.html">
+        <div>
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter Username" />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter Password" />
+        </div>
+        <button type="submit">Login</button>
+      </form>
     </main>
+
+    <footer>
+      <hr />
+      <span class="text-reset">Jake Evans</span>
+      <br />
+      <a href="https://github.com/jakeevans00/startup">Github Repo</a>
+    </footer>
   </body>
 </html>

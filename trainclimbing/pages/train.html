@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#37718E" />
+    <title>Daily Workout</title>
+    <link rel="icon" type="image/png" href="/trainclimbing/favicon2.ico" />
+  </head>
+  <body>
+    <header>
+      <h1>Train Climbing</h1>
+
+      <!--Navigation Elements-->
+      <menu>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="train.html">Training Plan</a></li>
+        <li><a href="progress.html">View Progress</a></li>
+        <li><a href="community.html">Beta Spray</a></li>
+        <li><a href="about.html">About</a></li>
+      </menu>
+      <hr />
+    </header>
+
+    <main>
+      <h1>Daily Workout</h1>
+      <section>
+        <h3>Welcome, username!</h3>
+        <div>
+          <p>Send grade: <b>V6</b></p>
+          <p>May 5, 2023 --- <b>Day 3</b></p>
+          <label for="progress">Completed plan</label>
+          <progress id="progress" max="100" value="75"></progress>
+        </div>
+      </section>
+      <section>
+        <h3>Day 3: Climbing Specific</h3>
+        <form>
+          <ul>
+            <li>
+              <label for="warmup">Warm-Up on wall</label>
+              <input type="checkbox" id="warmup" name="warmup" />
+            </li>
+
+            <br />
+            <li>
+              <label for="hang-warmup">Max Hang Warm up</label>
+              <input type="checkbox" id="hang-warmup" name="hang-warmup" />
+            </li>
+
+            <br />
+            <li>
+              <label for="hangs">Max Hangs</label>
+              <input type="checkbox" id-="hangs" name="hangs" />
+              <ul>
+                <li>
+                  <p><i>4 sets: 8 seconds on, 52 seconds off with weight</i></p>
+                </li>
+                <li>
+                  <label for="hangs-count">How many did you complete?</label>
+                  <input type="range" name="hangs-count" min="0" max="8" />
+                </li>
+
+                <br />
+                <li>
+                  <label for="hangs-weight"
+                    >How much weight did you use? (lbs)</label
+                  >
+                  <input
+                    type="number"
+                    name="hangs-weight"
+                    min="0"
+                    max="200"
+                    value="0"
+                  />
+                </li>
+              </ul>
+            </li>
+
+            <br />
+            <li>
+              <label for="campus">Campus Board</label>
+              <input type="checkbox" id="campus" name="campus" />
+              <ul>
+                <li>
+                  <p><i>6 sets: 4 laddering, 2 skipping</i></p>
+                </li>
+                <li>
+                  <label for="hangs-count">How many did you complete?</label>
+                  <input type="range" name="hangs-count" min="0" max="6" />
+                </li>
+              </ul>
+            </li>
+
+            <br />
+            <li>
+              <label for="projects">Project Bouldering</label>
+              <input type="checkbox" id="projects" name="projects" />
+              <ul>
+                <br />
+                <li>
+                  <label for="current-project">
+                    <i
+                      >What is the difficulty of your hardest project?
+                      (V-Scale)</i
+                    >
+                  </label>
+                  <input
+                    type="number"
+                    id="current-project"
+                    name="current-project"
+                    min="0"
+                    max="17"
+                    value="6"
+                  />
+                </li>
+              </ul>
+            </li>
+
+            <br />
+            <li>
+              <label for="limit">Limit Bouldering</label>
+              <input type="checkbox" id="limit" name="limit" />
+            </li>
+
+            <br />
+            <li>
+              <label for="lever">Front Lever</label>
+              <input type="checkbox" id="lever" name="lever" />
+              <ul>
+                <li>
+                  <p><i>4 x 10 seconds</i></p>
+                </li>
+                <li>
+                  <label for="hangs-count">How many did you complete?</label>
+                  <input type="range" name="hangs-count" min="0" max="8" />
+                </li>
+              </ul>
+            </li>
+
+            <br />
+            <li>
+              <label for="cool-down">Cool Down</label>
+              <input type="checkbox" id="cool-down" name="cool-down" />
+            </li>
+          </ul>
+          <button type="submit" method="post">Complete Training</button>
+        </form>
+        <a href="progress.html">See Progress</a>
+      </section>
+    </main>
+
+    <footer>
+      <hr />
+      <span class="text-reset">Jake Evans</span>
+      <br />
+      <a href="https://github.com/jakeevans00/startup">Github Repo</a>
+    </footer>
+  </body>
+</html>
