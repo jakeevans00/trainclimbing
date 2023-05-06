@@ -36,3 +36,19 @@ The following technologies will be incorporated into the project:
 - Login - Secure authentication for application users.
 - Web Socket - Live public forum to discuss the latest in climbing, training, etc
 - React - Fast, modern web framework.
+
+---
+
+## HTML Deliverable:
+
+For this deliverable, I created the basic application content/structure using HTML.
+
+- HTML pages - Five pages to allow users to login, view their daily training plan, see past progress, participate in a forum, and learn more about the app.
+- Links - All hyperlinks work as desired. Login button links to Training Plan page.
+- Images - Images in About page work as desired.
+- Login - Input/label boxes with submit button.
+- Database - Data pulled from the database is seen in 3 locations. First, the current "send grade" seen on the Training page. Second, the "day" of the training plan (eg. Day 3). And finally, in the Progress page, where a user will eventually see visualizations of their progress, based on persistent data stored about each user.
+- WebSocket - On the community page, there is a placeholder for an online chat feature, for climbers to share information about climbs, news, etc.
+- Github - Link to the github repository found on every page, see footer.
+- Simon - [www.simon.trainclimbing.com](www.simon.trainclimbing.com) is deployed with sample provided code
+- Startup - [www.startup.trainclimbing.com](www.startup.trainclimbing.com) is deployed with this deliverable's code
