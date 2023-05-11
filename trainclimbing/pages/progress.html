@@ -6,21 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Progress</title>
     <link rel="icon" type="image/ico" href="../favicon2.ico" />
+    <link rel="stylesheet" href="../static/css/train.css" />
   </head>
 
   <body>
     <header>
-      <h1>Train Climbing</h1>
-
       <!--Navigation Elements-->
-      <menu>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="train.html">Training Plan</a></li>
-        <li><a href="progress.html">View Progress</a></li>
-        <li><a href="community.html">Beta Spray</a></li>
-        <li><a href="about.html">About</a></li>
-      </menu>
-      <hr />
+      <navbar>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="../index.html"
+              ><img class="nav-logo" src="../static/img/logo2.png"
+            /></a>
+          </li>
+          <li class="nav-item">
+            <a href="#">Welcome, username!</a>
+          </li>
+          <li class="nav-item">
+            <a href="../index.html">
+              <button class="btn-primary" action="../index.html">Logout</button>
+            </a>
+          </li>
+        </ul>
+
+        <!-- <div class="navbar">
+          <menu>
+            <span> </span>
+
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="train.html">Training Plan</a></li>
+            <li><a href="progress.html">View Progress</a></li>
+            <li><a href="community.html">Beta Spray</a></li>
+            <li><a href="about.html">About</a></li>
+            <span><a href="#">Welcome User!</a></span>
+          </menu>
+        </div> -->
+      </navbar>
     </header>
 
     <main>
@@ -45,8 +66,7 @@
     </main>
 
     <footer>
-      <hr />
-      <span class="text-reset">Jake Evans</span>
+      <span class="footer-text">Jake Evans</span>
       <br />
       <a href="https://github.com/jakeevans00/startup">Github Repo</a>
     </footer>

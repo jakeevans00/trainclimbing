@@ -1,0 +1,159 @@
+:root {
+  /* color variables */
+  --clr-background: rgb(255, 255, 255);
+  --clr-gry: rgb(194, 194, 194);
+  --clr-primary-text: black;
+  --clr-theme: #37718e;
+  --clr-theme-hover: #48a2cf;
+
+  /* border radius */
+  --border-radius: 0.2rem;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+body {
+  font-family: eloquia;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main {
+  flex: 1;
+  display: flex;
+}
+
+footer {
+  flex: 0 30px;
+  background-color: var(--clr-theme);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: small;
+}
+
+a {
+  color: rgb(236, 166, 75);
+  text-decoration: none;
+  padding: 0px;
+  font-size: 15px;
+  transition: all 200ms ease-in;
+}
+a:hover {
+  color: rgb(241, 216, 184);
+}
+
+.sidebar {
+  width: 345px;
+  position: fixed;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: var(--clr-theme);
+}
+
+.sidebar-brand {
+  height: 90px;
+  padding: 1rem 0rem 1rem 2rem;
+  color: white;
+}
+
+.sidebar-brand span {
+  display: inline-block;
+  padding-right: 1rem;
+}
+
+.sidebar-menu li {
+  width: 100%;
+  margin-bottom: 1.3rem;
+  padding-left: 1rem;
+}
+
+.sidebar-menu a {
+  padding-left: 1rem;
+  display: block;
+  color: rgb(229, 168, 250);
+  font-size: 1.1rem;
+}
+.sidebar-menu a.active {
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px 0 0 30px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.sidebar-menu a span:first-child {
+  font-size: 1.3rem;
+  padding-right: 1rem;
+}
+
+.main-content {
+  margin-left: 345px;
+}
+
+.nav-list {
+  box-shadow: 0px 0px 10px var(--clr-gry);
+  margin: 0;
+  padding: 0.75rem 0;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.nav-item {
+  list-style: none;
+  margin-right: 2rem;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: black;
+  transition: all 200ms ease-in;
+}
+
+.nav-item a:hover {
+  color: var(--clr-theme);
+}
+
+.nav-item:nth-child(1) {
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
+.btn-primary {
+  font-size: 1rem;
+  font-family: eloquia;
+  background-color: var(--clr-theme);
+  border-radius: var(--border-radius);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+
+.btn-primary:hover {
+  background-color: var(--clr-theme-hover);
+}
+
+.nav-item a img:hover {
+  filter: transform(90%);
+}
+
+.footer-text {
+  padding: 0 0.5rem;
+}
+
+@font-face {
+  font-family: Eloquia;
+  src: url(../fonts/eloquia.otf);
+}

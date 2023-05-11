@@ -1,21 +1,30 @@
-* {
-  font-family: eloquia;
+:root {
+  /* color variables */
+  --clr-background: rgb(255, 255, 255);
+  --clr-gry: rgb(194, 194, 194);
+  --clr-primary-text: black;
+  --clir-primary-text-hover: blue;
+  --clr-theme: #37718e;
+  --clr-theme-hover: #48a2cf;
+
+  /* border radius */
+  --border-radius: 0.2rem;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }
 
 body {
+  font-family: eloquia;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  margin: 0;
-}
-
-header {
-  margin: 0px;
-  flex: 0 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: blanchedalmond;
 }
 
 main {
@@ -35,14 +44,6 @@ footer {
   color: white;
 }
 
-div {
-  display: flex;
-}
-menu {
-  display: flex;
-  justify-content: center;
-}
-
 input {
   width: 100%;
   text-align: start;
@@ -55,46 +56,38 @@ input {
   border-left: rgb(224, 184, 184) solid 2px;
   border-right: rgba(244, 201, 201, 0.7) solid 2px;
 }
-
-input:focus {
-  background-color: rgba(214, 234, 248, 0.11);
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  color: rgb(236, 166, 75);
-  text-decoration: none;
-  padding: 8px;
-  font-size: 15px;
-}
-
-i {
-  font-family: Eloquia;
-}
-a:hover {
-  color: rgb(241, 216, 184);
-  font-size: 16px;
-}
 h1 {
   color: rgb(208, 95, 95);
-  font-size: 6em;
+  font-size: 6rem;
   font-family: Eloquia;
   margin: -5px;
 }
 
+input:focus {
+  background-color: rgba(214, 234, 248, 0.11);
+}
+a {
+  color: rgb(236, 166, 75);
+  text-decoration: none;
+  padding: 0px;
+  font-size: 15px;
+  transition: all 200ms ease-in;
+}
+a:hover {
+  color: rgb(241, 216, 184);
+}
 .button {
   background-color: #37718e;
   border-radius: 5px;
   border: black solid 1px;
   font-size: 16px;
+  font-family: eloquia;
   color: white;
   padding: 8px 14px;
+  transition: all 200ms ease-in;
 }
 .button:hover {
-  background-color: #52b3e3;
+  background-color: #48a2cf;
 }
 .view {
   display: flex;
@@ -107,18 +100,41 @@ h1 {
   background-size: cover; */
 }
 
-.logo {
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  border-image-width: 3vw;
-}
-
 .footer-text {
   font-size: small;
+  padding: 0 0.5rem;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0.75rem 0;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.nav-item {
+  list-style: none;
+  margin-right: 2rem;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: black;
+  transition: all 200ms ease-in;
+}
+
+.nav-item:nth-child(1) {
+  margin-right: auto;
+  margin-left: 2rem;
 }
 
 @font-face {
   font-family: Eloquia;
   src: url(../fonts/eloquia.otf);
+}
+
+.hide {
+  display: none;
 }
