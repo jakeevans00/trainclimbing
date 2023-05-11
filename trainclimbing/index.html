@@ -7,43 +7,44 @@
     <meta name="theme-color" content="#37718E" />
     <title>Home</title>
     <link rel="icon" type="image/ico" href="favicon2.ico" />
+    <link rel="stylesheet" href="static/css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <header>
-      <h1>Train Climbing</h1>
+    <main class="view">
+      <a href="index.html"><img class="logo" src="static/img/logo2.png" /></a>
 
-      <!--Navigation Elements-->
-      <menu>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="pages/train.html">Training Plan</a></li>
-        <li><a href="pages/progress.html">View Progress</a></li>
-        <li><a href="pages/community.html">Community</a></li>
-        <li><a href="about.html">About</a></li>
-      </menu>
-      <hr />
-    </header>
-
-    <main>
       <h1>Welcome!</h1>
-      <i>Login to start training today!</i>
-      <br /><br />
+      <p>Login to start training today!</p>
+      <br />
+
       <form method="get" action="pages/train.html">
-        <div>
-          <label for="username">Username</label>
-          <input type="text" id="username" placeholder="Enter Username" />
-        </div>
-        <div>
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Enter Password" />
-        </div>
-        <button type="submit">Login</button>
+        <label for="username">Username</label>
+        <input
+          class="input-text"
+          type="text"
+          id="username"
+          placeholder="Enter Username"
+        />
+
+        <label for="password">Password</label>
+        <input
+          class="input-text"
+          type="password"
+          id="password"
+          placeholder="Enter Password"
+        />
+
+        <button class="button" type="submit">Login</button>
       </form>
     </main>
-
     <footer>
-      <hr />
-      <span class="text-reset">Jake Evans</span>
-      <br />
+      <span class="footer-text">Copyright Jake Evans</span>
       <a href="https://github.com/jakeevans00/startup">Github Repo</a>
     </footer>
   </body>
