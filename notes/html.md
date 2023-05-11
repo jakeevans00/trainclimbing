@@ -2,6 +2,8 @@
 
 HTML is used to create the structure of web applications. There are over 100 tags that define the way elements on the page interact and are rendered.
 
+HTML is a tree. DOM
+
 > Basic tags
 
 - `head`: Header info
@@ -23,7 +25,7 @@ HTML is used to create the structure of web applications. There are over 100 tag
 - `form`: Input containe and submission
 - `fieldset`: Labeled input grouping
 - `input`: Multiple types
-  ![Input Types](static/img/inputs.png)
+  ![Input Types](../static/img/inputs.png)
 - `select`: Selection dropdown
 - `optgroup`: Grouped selection dropdown
 - `option`: Selection option

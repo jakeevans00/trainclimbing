@@ -1,0 +1,55 @@
+/* * {
+    Can use this to specify all 
+} */
+
+body {
+  font-family: sans-serif;
+  background-color: black;
+  color: rgb(0, 234, 255);
+}
+
+h1 {
+  border-bottom: thin rgb(255, 117, 151) solid;
+}
+
+section {
+  background: rgb(46, 37, 103);
+  padding: 0.45em;
+  margin-bottom: 0.5em;
+  border: solid 2px white;
+  border-radius: 4%;
+}
+
+section h2 {
+  color: rgb(255, 117, 151);
+}
+
+h2 ~ p {
+  padding-left: 0.5em;
+}
+
+/* Paragraph element with a class of summary */
+p.summary {
+  font-weight: bold;
+}
+
+section:hover {
+  border-left: solid 1em rgb(247, 184, 184);
+}
+
+#chemistry {
+  animation-name: demo;
+  animation-duration: 3s;
+}
+
+@keyframes demo {
+  from {
+    font-size: 0em;
+  }
+  95% {
+    font-size: 1.2em;
+  }
+  to {
+    font-size: 1em;
+  }
+}

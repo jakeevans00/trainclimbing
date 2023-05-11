@@ -50,5 +50,5 @@ For this deliverable, I created the basic application content/structure using HT
 - Database - Data pulled from the database is seen in 3 locations. First, the current "send grade" seen on the Training page. Second, the "day" of the training plan (eg. Day 3). And finally, in the Progress page, where a user will eventually see visualizations of their progress, based on persistent data stored about each user.
 - WebSocket - On the community page, there is a placeholder for an online chat feature, for climbers to share information about climbs, news, etc.
 - Github - Link to the github repository found on every page, see footer.
-- Simon - [www.simon.trainclimbing.com](https://simon.trainclimbing.com) is deployed with sample provided code
-- Startup - [www.startup.trainclimbing.com](https://startup.trainclimbing.com) is deployed with this deliverable's code
+- Simon - [https://simon.trainclimbing.com](https://simon.trainclimbing.com) is deployed with sample provided code
+- Startup - [https://startup.trainclimbing.com](https://startup.trainclimbing.com) is deployed with this deliverable's code
