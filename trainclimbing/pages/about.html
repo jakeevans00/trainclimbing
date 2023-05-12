@@ -6,64 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#37718E" />
     <title>About Us</title>
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
     <link rel="icon" type="image/ico" href="../favicon2.ico" />
     <link rel="stylesheet" href="../static/css/train.css " />
   </head>
   <body>
-    <header>
-      <!--Navigation Elements-->
-      <navbar>
-        <ul class="nav-list">
-          <li class="nav-item">
-            <a href="../index.html"
-              ><img class="nav-logo" src="../static/img/logo2.png"
-            /></a>
+    <div class="sidebar">
+      <div class="sidebar-brand">
+        <h1>
+          <span>ChalkUp_</span>
+        </h1>
+      </div>
+      <div class="sidebar-menu">
+        <ul>
+          <li>
+            <a href="train.html"
+              ><span class="las la-dumbbell"></span><span>Daily Workout</span>
+            </a>
           </li>
-          <li class="nav-item">
-            <a href="#">Welcome, username!</a>
+          <li>
+            <a href="progress.html"
+              ><span class="las la-chart-bar"></span><span>View Progress</span>
+            </a>
           </li>
-          <li class="nav-item">
-            <a href="../index.html">
-              <button class="btn-primary" action="../index.html">Logout</button>
+          <li>
+            <a href="community.html"
+              ><span class="las la-comments"></span><span>Beta Spray</span>
+            </a>
+          </li>
+          <li>
+            <a class="active" href="about.html"
+              ><span class="las la-address-card"></span><span>About</span>
             </a>
           </li>
         </ul>
-
-        <!-- <div class="navbar">
-          <menu>
-            <span> </span>
-
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="train.html">Training Plan</a></li>
-            <li><a href="progress.html">View Progress</a></li>
-            <li><a href="community.html">Beta Spray</a></li>
-            <li><a href="about.html">About</a></li>
-            <span><a href="#">Welcome User!</a></span>
-          </menu>
-        </div> -->
-      </navbar>
-    </header>
-
-    <main>
-      <h1>About Us</h1>
-      <p>
-        TrainClimbing.com is managed by a group of passionate climbers based out
-        of Utah. The site is intended as a launching point for climbers who have
-        been actively training for at least a year. Many of the workouts are
-        strenous and can damage tendons if adequate precautions are not taken.
-        Be sure to follow us on social media and, above all, no half sends!
-      </p>
-      <div>
-        <img src="../static/img/fullsend.jpg" alt="sending in pc" width="300" />
-        <img src="../static/img/whatup.jpg" alt="chillin" width="300" />
       </div>
-    </main>
+    </div>
+    <div class="main-content">
+      <header>
+        <!--Navigation Elements-->
+        <navbar>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../index.html"
+                ><img class="nav-logo" src="../static/img/logo2.png" width="71"
+              /></a>
+            </li>
+            <li class="nav-item">
+              <a href="#">Welcome, username!</a>
+            </li>
+            <li class="nav-item">
+              <a href="../index.html">
+                <button class="btn-primary" action="../index.html">
+                  Logout
+                </button>
+              </a>
+            </li>
+          </ul>
+        </navbar>
+      </header>
 
-    <footer>
-      <hr />
-      <span class="text-reset">Jake Evans</span>
-      <br />
-      <a href="https://github.com/jakeevans00/startup">Github Repo</a>
-    </footer>
+      <main>
+        <div class="cards">
+          <div class="card-single card-single--workout">
+            <h1>About Us</h1>
+            <p>
+              TrainClimbing.com is managed by a group of passionate climbers
+              based out of Utah. The site is intended as a launching point for
+              climbers who have been actively training for at least a year. Many
+              of the workouts are strenous and can damage tendons if adequate
+              precautions are not taken. Be sure to follow us on social media
+              and, above all, no half sends!
+            </p>
+            <div>
+              <img
+                src="../static/img/fullsend.jpg"
+                alt="sending in pc"
+                width="300"
+              />
+              <img src="../static/img/whatup.jpg" alt="chillin" width="300" />
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <hr />
+        <span class="footer-text">Jake Evans</span>
+        <br />
+        <a href="https://github.com/jakeevans00/startup">Github Repo</a>
+      </footer>
+    </div>
   </body>
 </html>

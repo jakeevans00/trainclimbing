@@ -1,13 +1,17 @@
 :root {
   /* color variables */
   --clr-background: rgb(255, 255, 255);
-  --clr-gry: rgb(194, 194, 194);
+  --clr-gry: rgb(239, 236, 236);
   --clr-primary-text: black;
   --clr-theme: #37718e;
   --clr-theme-hover: #48a2cf;
+  --clr-sidebar-background: #37718ee1;
+  --clr-link: rgb(236, 166, 75);
+  --clr-link-hover: rgb(221, 114, 82);
+  --clr-header: rgb(208, 95, 95);
 
   /* border radius */
-  --border-radius: 0.2rem;
+  --border-radius: 0.4rem;
 }
 
 *,
@@ -29,41 +33,185 @@ body {
 main {
   flex: 1;
   display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  min-height: calc(100vh - 90px);
 }
 
 footer {
   flex: 0 30px;
-  background-color: var(--clr-theme);
+  height: 30px;
+  background-color: var(--clr-background);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: var(--clr-theme);
   font-size: small;
 }
-
+h1 {
+  font-size: 3rem;
+}
 a {
-  color: rgb(236, 166, 75);
+  color: var(--clr-link);
   text-decoration: none;
   padding: 0px;
   font-size: 15px;
   transition: all 200ms ease-in;
 }
 a:hover {
-  color: rgb(241, 216, 184);
+  color: var(--clr-link-hover);
 }
 
+progress {
+  border-radius: 7px;
+  width: 100%;
+  height: 15px;
+  border: rgb(226, 221, 221) solid thin;
+}
+progress::-webkit-progress-bar {
+  background-color: rgb(255, 255, 255);
+  border-radius: 7px;
+}
+progress::-webkit-progress-value {
+  background-color: var(--clr-header);
+  border-radius: 7px;
+  border: rgb(200, 198, 198) solid thin;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+.form-control {
+  font-size: 1rem;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+.form-control + .form-control {
+  margin-top: 1em;
+}
+
+.form li {
+  margin: 2rem 0;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--clr-theme);
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 12rem;
+}
+/***** Track Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #053a5f;
+  height: 0.4rem;
+}
+/***** Thumb Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -11px; /* Centers thumb on the track */
+  border-radius: 20px;
+  background-color: var(--clr-theme-hover);
+  height: 1.75rem;
+  width: 1rem;
+}
+
+/******** Firefox ********/
+input[type="range"]::-moz-range-track {
+  background: #053a5f;
+  height: 0.5rem;
+}
+/***** Thumb Styles *****/
+/***** Firefox *****/
+input[type="range"]::-moz-range-thumb {
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0; /*Removes default border-radius that FF applies*/
+  background-color: #5cd5eb;
+  height: 2rem;
+  width: 1rem;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 13rem;
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  text-align: center;
+  padding: 8px 5px;
+  border-radius: 6px;
+  border: solid black thin;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  color: grey;
+}
+
+.wk-details li {
+  margin-left: 1.58rem;
+}
 .sidebar {
   width: 345px;
   position: fixed;
   height: 100%;
   left: 0;
   top: 0;
-  background-color: var(--clr-theme);
+  background-color: var(--clr-sidebar-background);
 }
 
 .sidebar-brand {
-  height: 90px;
-  padding: 1rem 0rem 1rem 2rem;
+  height: 100px;
+  padding: 1.5rem 0rem 1rem 2rem;
   color: white;
 }
 
@@ -81,11 +229,12 @@ a:hover {
 .sidebar-menu a {
   padding-left: 1rem;
   display: block;
-  color: rgb(229, 168, 250);
+  color: rgb(250, 214, 168);
   font-size: 1.1rem;
 }
 .sidebar-menu a.active {
   background-color: rgb(255, 255, 255);
+  color: rgb(236, 166, 75);
   border-radius: 30px 0 0 30px;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -99,11 +248,50 @@ a:hover {
   margin-left: 345px;
 }
 
+.card-single {
+  display: flex;
+  justify-content: space-between;
+  background-color: #eef4f7;
+  padding: 2rem;
+  margin: 0.5rem;
+  border-radius: var(--border-radius);
+  border-left: #67a1be1f solid 30px;
+  border-right: #67a1be1f solid 30px;
+}
+
+.card-single--progress {
+  flex-direction: row;
+  justify-content: center space-between;
+}
+
+.card-single--workout {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-single h1 {
+  color: rgb(208, 95, 95);
+}
+
+.card-single--workout span {
+  color: rgb(236, 166, 75);
+}
+
+.card-single span:first-child {
+  color: #37718e;
+}
+.card-header {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .nav-list {
-  box-shadow: 0px 0px 10px var(--clr-gry);
+  box-shadow: 0px 2px 5px var(--clr-gry);
   margin: 0;
   padding: 0.75rem 0;
-  border-radius: var(--border-radius);
   display: flex;
   justify-content: end;
   align-items: center;
@@ -143,6 +331,13 @@ a:hover {
 
 .btn-primary:hover {
   background-color: var(--clr-theme-hover);
+}
+.btn-primary--info {
+  background-color: var(--clr-link);
+}
+.btn-primary--info:hover {
+  background-color: var(--clr-link-hover);
+  color: white;
 }
 
 .nav-item a img:hover {

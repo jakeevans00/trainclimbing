@@ -52,9 +52,8 @@ input {
   padding: 12px 20px;
   margin: 8px 0px;
   box-shadow: none;
-  border-bottom: rgb(230, 179, 179) solid 2px;
-  border-left: rgb(224, 184, 184) solid 2px;
-  border-right: rgba(244, 201, 201, 0.7) solid 2px;
+  border: rgba(230, 179, 179, 0.564) solid 2px;
+  font-family: eloquia;
 }
 h1 {
   color: rgb(208, 95, 95);
