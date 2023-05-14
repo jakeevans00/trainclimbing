@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#37718E" />
+    <meta name="theme-color" content="#57685c" />
 
     <title>Progress</title>
     <link
@@ -18,9 +18,7 @@
   <body>
     <div class="sidebar">
       <div class="sidebar-brand">
-        <h1>
-          <span>ChalkUp_</span>
-        </h1>
+        <h2><span class="las la-mountain"></span><span>ChalkUp_</span></h2>
       </div>
       <div class="sidebar-menu">
         <ul>
@@ -53,9 +51,11 @@
         <navbar>
           <ul class="nav-list">
             <li class="nav-item">
-              <a href="../index.html"
-                ><img class="nav-logo" src="../static/img/logo2.png" width="71"
-              /></a>
+              <h1>
+                <label for="nav-toggle">
+                  <span class="las la-bars bars"></span>
+                </label>
+              </h1>
             </li>
             <li class="nav-item">
               <a href="#">Welcome, username!</a>
@@ -75,24 +75,35 @@
         <section>
           <div class="cards">
             <div class="card-single card-single--workout">
-              <h1>View Progress</h1>
-        <p>Info about climber:</p>
-        <ul>
-          <li>Name:</li>
-          <li>Age</li>
-          <li>Height</li>
-          <li>Weight</li>
-          <li>Hardest Send</li>
-          <li>
-            Progress through plan:
-            <progress max="100" min="0" value="50"></progress>
-          </li>
-        </ul>
-        <section>
-          <div>
-            <p>Maybe some visualizations here?</p>
+              <div class="card-header">
+                <h1>View Progress</h1>
+                <span>Info about climber:</span>
+              </div>
+              <div class="info">
+                <ul>
+                  <li>Name: Jake Evans</li>
+                  <li>Age: 23</li>
+                  <li>Height: 5'7"</li>
+                  <li>Weight: 130lbs</li>
+                  <li>Hardest Send: V8</li>
+                  <li>
+                    Progress through plan:
+                    <progress max="100" min="0" value="50"></progress>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-single card-single--workout">
+            <div class="card-header">
+              <span>Visualizations Here:</span>
+            </div>
+            <div>
+              <img src="../static/img/chart.png" />
+            </div>
           </div>
         </section>
+        <section></section>
       </main>
       <footer>
         <span class="footer-text">Copyright Jake Evans</span>

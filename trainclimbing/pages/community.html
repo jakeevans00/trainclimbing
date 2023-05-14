@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#37718E" />
+    <meta name="theme-color" content="#57685c" />
     <title>Beta Spray</title>
     <link
       rel="stylesheet"
@@ -16,9 +16,7 @@
   <body>
     <div class="sidebar">
       <div class="sidebar-brand">
-        <h1>
-          <span>ChalkUp_</span>
-        </h1>
+        <h2><span class="las la-mountain"></span><span>ChalkUp_</span></h2>
       </div>
       <div class="sidebar-menu">
         <ul>
@@ -51,9 +49,11 @@
         <navbar>
           <ul class="nav-list">
             <li class="nav-item">
-              <a href="../index.html"
-                ><img class="nav-logo" src="../static/img/logo2.png" width="71"
-              /></a>
+              <h1>
+                <label for="nav-toggle">
+                  <span class="las la-bars bars"></span>
+                </label>
+              </h1>
             </li>
             <li class="nav-item">
               <a href="#">Welcome, username!</a>
@@ -72,16 +72,18 @@
       <main>
         <section>
           <div class="cards">
-            <div class="card-single">
+            <div class="card-single card-single--workout">
               <section>
-                <h1>Beta Spray</h1>
-                <h2>What's Happening?</h2>
-                <p>
-                  Home to news, updates, and happenings in the world of rock
-                  climbing
-                </p>
+                <div class="card-header">
+                  <h1>Beta Spray</h1>
+                  <span class="subtext">
+                    Home to news, updates, and happenings in the world of rock
+                    climbing
+                  </span>
+                </div>
+
                 <div>
-                  <h3>Burden of Dreams Repeated!</h3>
+                  <h3 class="subheader">Burden of Dreams Repeated!</h3>
                   <iframe
                     width="560"
                     height="315"
@@ -92,7 +94,9 @@
                     allowfullscreen
                   ></iframe>
 
-                  <h3>World's 2nd 5.15d Established by Seb Bouin</h3>
+                  <h3 class="subheader">
+                    World's 2nd 5.15d Established by Seb Bouin
+                  </h3>
                   <img
                     src="https://gripped.com/wp-content/uploads/2022/05/DNA-5.15d.jpg"
                     alt="Seb Bouin on DNA"
@@ -100,25 +104,24 @@
                   />
                 </div>
               </section>
-              <section>
-                <div>
-                  <h3>Community Spray</h3>
-                  <p>Chat will go here!</p>
-                  <img
-                    src="https://www.revechat.com/wp-content/uploads/2020/08/what-is-web-chat-1280x720.jpg"
-                    alt="chat"
-                    width="200"
-                  />
-                </div>
-              </section>
             </div>
+          </div>
+        </section>
+        <section>
+          <div class="card-single card-single--workout">
+            <h1 class="card-header">Community Spray</h1>
+            <span class="subtext">Chat will go here!</span>
+            <img
+              src="https://www.revechat.com/wp-content/uploads/2020/08/what-is-web-chat-1280x720.jpg"
+              alt="chat"
+              width="200"
+            />
           </div>
         </section>
       </main>
 
       <footer>
         <span class="footer-text">Jake Evans</span>
-        <br />
         <a href="https://github.com/jakeevans00/startup">Github Repo</a>
       </footer>
     </div>

@@ -1,6 +1,25 @@
 :root {
   /* color variables */
-  --clr-background: rgb(255, 255, 255);
+  --clr-background: rgba(255, 251, 246, 0.539);
+  --clr-gry: rgb(239, 236, 236);
+  --clr-primary-text: #0e131f;
+  --clr-theme: #91768a;
+  --clr-theme-hover: #3b3f56;
+  --clr-sidebar-background: #57685c;
+  --clr-link: #dbb78d;
+  --clr-link-active: #91768a;
+  --clr-link-hover: #9d5824;
+  --clr-header: #91768a;
+  --clr-subtext: #cfafc6;
+  --clr-card-background: #dbb78d11;
+  --clr-card-border: #57685c5f;
+
+  /* border radius */
+  --border-radius: 0.4rem;
+}
+
+/* original color variables */
+/* --clr-background: rgb(255, 255, 255);
   --clr-gry: rgb(239, 236, 236);
   --clr-primary-text: black;
   --clr-theme: #37718e;
@@ -8,11 +27,7 @@
   --clr-sidebar-background: #37718ee1;
   --clr-link: rgb(236, 166, 75);
   --clr-link-hover: rgb(221, 114, 82);
-  --clr-header: rgb(208, 95, 95);
-
-  /* border radius */
-  --border-radius: 0.4rem;
-}
+  --clr-header: rgb(208, 95, 95); */
 
 *,
 *:before,
@@ -28,6 +43,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  color: var(--clr-primary-text);
+  background-color: var(--clr-background);
 }
 
 main {
@@ -51,12 +68,16 @@ footer {
 h1 {
   font-size: 3rem;
 }
+
+h2 {
+  font-size: 2.5rem;
+}
 a {
   color: var(--clr-link);
   text-decoration: none;
   padding: 0px;
   font-size: 15px;
-  transition: all 200ms ease-in;
+  transition: all 300ms;
 }
 a:hover {
   color: var(--clr-link-hover);
@@ -99,6 +120,8 @@ input[type="checkbox"] {
 }
 .form-control {
   font-size: 1rem;
+  font-family: Overpass;
+  font-weight: 500;
   line-height: 1.1;
   display: grid;
   grid-template-columns: 1em auto;
@@ -141,7 +164,7 @@ input[type="range"] {
 /***** Track Styles *****/
 /***** Chrome, Safari, Opera, and Edge Chromium *****/
 input[type="range"]::-webkit-slider-runnable-track {
-  background: #053a5f;
+  background: var(--clr-card-border);
   height: 0.4rem;
 }
 /***** Thumb Styles *****/
@@ -151,14 +174,14 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   margin-top: -11px; /* Centers thumb on the track */
   border-radius: 20px;
-  background-color: var(--clr-theme-hover);
+  background-color: var(--clr-theme);
   height: 1.75rem;
   width: 1rem;
 }
 
 /******** Firefox ********/
 input[type="range"]::-moz-range-track {
-  background: #053a5f;
+  background: var(--clr-card-border);
   height: 0.5rem;
 }
 /***** Thumb Styles *****/
@@ -199,6 +222,7 @@ input[type="range"]::-moz-range-thumb {
 
 .wk-details li {
   margin-left: 1.58rem;
+  font-family: Overpass;
 }
 .sidebar {
   width: 345px;
@@ -207,12 +231,14 @@ input[type="range"]::-moz-range-thumb {
   left: 0;
   top: 0;
   background-color: var(--clr-sidebar-background);
+  transition: margin-right 300ms;
 }
 
 .sidebar-brand {
-  height: 100px;
-  padding: 1.5rem 0rem 1rem 2rem;
+  height: 80px;
+  padding: 1rem 0rem 1rem 2rem;
   color: white;
+  transition: all 300ms;
 }
 
 .sidebar-brand span {
@@ -229,12 +255,13 @@ input[type="range"]::-moz-range-thumb {
 .sidebar-menu a {
   padding-left: 1rem;
   display: block;
-  color: rgb(250, 214, 168);
+  color: var(--clr-link);
   font-size: 1.1rem;
 }
+
 .sidebar-menu a.active {
   background-color: rgb(255, 255, 255);
-  color: rgb(236, 166, 75);
+  color: var(--clr-link-active);
   border-radius: 30px 0 0 30px;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -244,19 +271,51 @@ input[type="range"]::-moz-range-thumb {
   padding-right: 1rem;
 }
 
+#nav-toggle:checked + .sidebar {
+  width: 70px;
+}
+
+#nav-toggle:checked + .sidebar .sidebar-brand,
+#nav-toggle:checked + .sidebar li {
+  padding-left: 1rem;
+  text-align: center;
+}
+
+#nav-toggle:checked + .sidebar li a {
+  padding-left: 0rem;
+}
+
+#nav-toggle:checked + .sidebar .sidebar-brand h2 span:last-child,
+#nav-toggle:checked + .sidebar li a span:last-child {
+  display: none;
+}
+
+#nav-toggle:checked ~ .main-content {
+  margin-left: 70px;
+}
+
+#nav-toggle:checked ~ .main-content {
+  width: calc(100% - 70px);
+  left: 70px;
+}
+
+#nav-toggle:checked ~ .nav-list {
+  left: 70px;
+}
 .main-content {
+  transition: margin-left 300ms;
   margin-left: 345px;
 }
 
 .card-single {
   display: flex;
   justify-content: space-between;
-  background-color: #eef4f7;
+  background-color: var(--clr-card-background);
   padding: 2rem;
   margin: 0.5rem;
   border-radius: var(--border-radius);
-  border-left: #67a1be1f solid 30px;
-  border-right: #67a1be1f solid 30px;
+  border-left: var(--clr-card-border) solid 30px;
+  border-right: var(--clr-card-border) solid 30px;
 }
 
 .card-single--progress {
@@ -271,15 +330,15 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .card-single h1 {
-  color: rgb(208, 95, 95);
+  color: var(--clr-header);
 }
 
 .card-single--workout span {
-  color: rgb(236, 166, 75);
+  color: var(--clr-subtext);
 }
 
 .card-single span:first-child {
-  color: #37718e;
+  color: var(--clr-subtext);
 }
 .card-header {
   margin-bottom: 1rem;
@@ -289,12 +348,22 @@ input[type="range"]::-moz-range-thumb {
   align-items: center;
 }
 .nav-list {
-  box-shadow: 0px 2px 5px var(--clr-gry);
+  box-shadow: 0px 2px 5px #dbb78d1f;
   margin: 0;
   padding: 0.75rem 0;
   display: flex;
   justify-content: end;
   align-items: center;
+  transition: left 300ms;
+}
+
+#nav-toggle {
+  display: none;
+}
+
+.bars {
+  color: var(--clr-sidebar-background);
+  cursor: pointer;
 }
 
 .nav-item {
@@ -315,6 +384,17 @@ input[type="range"]::-moz-range-thumb {
 .nav-item:nth-child(1) {
   margin-right: auto;
   margin-left: 2rem;
+}
+
+.info ul,
+.info {
+  list-style: none;
+  font-family: Overpass;
+  min-width: 30rem;
+}
+
+.info {
+  justify-content: center;
 }
 
 .btn-primary {
@@ -351,4 +431,45 @@ input[type="range"]::-moz-range-thumb {
 @font-face {
   font-family: Eloquia;
   src: url(../fonts/eloquia.otf);
+}
+
+@font-face {
+  font-family: Overpass;
+  src: url(../fonts/overpass.ttf);
+}
+
+@media only screen and (max-width: 1200px) {
+  .sidebar {
+    width: 70px;
+  }
+
+  .sidebar .sidebar-brand,
+  .sidebar li {
+    padding-left: 1rem;
+    text-align: center;
+  }
+
+  .sidebar li a {
+    padding-left: 0rem;
+  }
+
+  .sidebar .sidebar-brand h2 span:last-child,
+  .sidebar li a span:last-child {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 70px;
+  }
+
+  .nav-list {
+    width: calc(100%);
+    left: 70px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-item a {
+    display: none;
+  }
 }

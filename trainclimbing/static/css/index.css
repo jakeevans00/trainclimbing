@@ -1,14 +1,19 @@
 :root {
-  /* color variables */
-  --clr-background: rgb(255, 255, 255);
-  --clr-gry: rgb(194, 194, 194);
-  --clr-primary-text: black;
-  --clir-primary-text-hover: blue;
-  --clr-theme: #37718e;
-  --clr-theme-hover: #48a2cf;
+  --clr-background: rgba(255, 251, 246, 0.539);
+  --clr-gry: rgb(239, 236, 236);
+  --clr-primary-text: #0e131f;
+  --clr-theme: #91768a;
+  --clr-theme-hover: #3b3f56;
+  --clr-sidebar-background: #57685c;
+  --clr-link: #dbb78d;
+  --clr-link-active: #91768a;
+  --clr-link-hover: #be7f4f;
+  --clr-header: #91768a;
+  --clr-card-background: #dbb78d11;
+  --clr-card-border: #57685c5f;
 
   /* border radius */
-  --border-radius: 0.2rem;
+  --border-radius: 0.4rem;
 }
 
 *,
@@ -40,7 +45,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #37718e;
+  background-color: var(--clr-sidebar-background);
   color: white;
 }
 
@@ -52,33 +57,33 @@ input {
   padding: 12px 20px;
   margin: 8px 0px;
   box-shadow: none;
-  border: rgba(230, 179, 179, 0.564) solid 2px;
+  border: rgba(75, 98, 76, 0.305) solid 2px;
   font-family: eloquia;
 }
 h1 {
-  color: rgb(208, 95, 95);
+  color: var(--clr-header);
   font-size: 6rem;
   font-family: Eloquia;
   margin: -5px;
 }
 
 input:focus {
-  background-color: rgba(214, 234, 248, 0.11);
+  background-color: rgba(240, 214, 248, 0.11);
 }
 a {
-  color: rgb(236, 166, 75);
+  color: var(--clr-link);
   text-decoration: none;
   padding: 0px;
   font-size: 15px;
   transition: all 200ms ease-in;
 }
 a:hover {
-  color: rgb(241, 216, 184);
+  color: var(--clr-link-hover);
 }
 .button {
-  background-color: #37718e;
-  border-radius: 5px;
-  border: black solid 1px;
+  background-color: var(--clr-theme);
+  border-radius: var(--border-radius);
+  border: none;
   font-size: 16px;
   font-family: eloquia;
   color: white;
@@ -86,7 +91,7 @@ a:hover {
   transition: all 200ms ease-in;
 }
 .button:hover {
-  background-color: #48a2cf;
+  background-color: var(--clr-theme-hover);
 }
 .view {
   display: flex;
@@ -136,4 +141,12 @@ a:hover {
 
 .hide {
   display: none;
+}
+
+.mtn {
+  color: var(--clr-link);
+}
+
+.subtext {
+  color: #cfafc6;
 }
