@@ -55,10 +55,10 @@ For this deliverable, I created the basic application content/structure using HT
 
 ## CSS Deliverable:
 
-For this deliverable, I styled the basic application using only custom CSS (slower, but a great learning exoerience).
+For this deliverable, I styled the basic application using only custom CSS (slower, but a great learning experience).
 
 - Header, Footer, Sidebar, & Main Content Areas
-- Navigation elements - Sidebar links are styled according to state (active vs passive). Other links are either displayed as buttons. Most links have associated hover effects.
+- Navigation elements - Sidebar links are styled according to state (active vs passive). Other links are either displayed as buttons or colored text. Non-sidebar links have associated hover effects.
 - Responsive - Header, footer, and main content shrinks and responds well to screen resizing. Sidebar collapses for media that is < 768px wide. Collapsing is toggle-able only on the daily workout page, since it relies on an id selector. However, if the app becomes single-page in the future, this functionality will extend to the other 3 pages.
 - Application elements - Elements are styled with muted, earthy colors. Content is contained in cards with good color balance.
 - Application text - Text is styled according to function (header, subheader, body text, etc). 2 fonts.
