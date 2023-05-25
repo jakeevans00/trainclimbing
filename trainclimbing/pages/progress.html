@@ -58,7 +58,7 @@
               </h1>
             </li>
             <li class="nav-item">
-              <a href="#">Welcome, username!</a>
+              <a href="#" class="welcomeUser">Welcome,</a>
             </li>
             <li class="nav-item">
               <a href="../index.html">
@@ -81,14 +81,14 @@
               </div>
               <div class="info">
                 <ul>
-                  <li>Name: Jake Evans</li>
-                  <li>Age: 23</li>
-                  <li>Height: 5'7"</li>
-                  <li>Weight: 130lbs</li>
-                  <li>Hardest Send: V8</li>
-                  <li>
+                  <li id="userName">Name:</li>
+                  <li id="userAge">Age:</li>
+                  <li id="userHeight">Height:</li>
+                  <li id="userWeight">Weight:</li>
+                  <li id="hardestSend">Hardest Send:</li>
+                  <li id="progressbar">
                     Progress through plan:
-                    <progress max="100" min="0" value="50"></progress>
+                    <progress max="4" min="0" value="3"></progress>
                   </li>
                 </ul>
               </div>
@@ -111,5 +111,6 @@
         <a href="https://github.com/jakeevans00/startup">Github Repo</a>
       </footer>
     </div>
+    <script src="../static/js/progress.js"></script>
   </body>
 </html>

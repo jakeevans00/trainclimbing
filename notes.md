@@ -10,3 +10,4 @@
 - **[Deployment: DNS, Caddy, Etc](notes/deployment.md)**
 - **[HTML](notes/html.md)**
 - **[CSS](notes/css.md)**
+- **[JavaScript](notes/javascript.md)**

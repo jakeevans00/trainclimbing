@@ -57,7 +57,7 @@
               </h1>
             </li>
             <li class="nav-item">
-              <a href="#">Welcome, username!</a>
+              <a href="#" class="welcomeUser">Welcome,</a>
             </li>
             <li class="nav-item">
               <a href="../index.html">
@@ -73,12 +73,9 @@
         <section>
           <div class="cards">
             <div class="card-single card-single--progress">
-              <p>May 5, 2023</p>
-              <p>Project Grade: <b>V6</b></p>
-              <span>
-                <label for="progress">Current Progress</label>
-                <progress id="progress" max="100" value="75"></progress>
-              </span>
+              <p id="date"></p>
+              <p>Project Grade: <b id="projectGrade">V</b></p>
+              <span class="progressBar"></span>
             </div>
           </div>
         </section>
@@ -87,12 +84,12 @@
             <div class="card-single card-single--workout">
               <div class="card-header">
                 <h1>Daily Workout</h1>
-                <span>Day 3 | Climbing Specific</span>
+                <span id="workoutType">Day</span>
               </div>
 
               <div class="form">
                 <form>
-                  <ul class="form">
+                  <ul class="form" id="workout">
                     <li>
                       <label class="form-control" for="warmup">
                         <input type="checkbox" id="warmup" name="warmup" />
@@ -270,5 +267,6 @@
         <a href="https://github.com/jakeevans00/startup">Github Repo</a>
       </footer>
     </div>
+    <script src="../static/js/train.js"></script>
   </body>
 </html>
