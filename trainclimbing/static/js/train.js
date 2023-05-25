@@ -41,34 +41,41 @@ const workouts = {
   odd: {
     category: "Climbing Specific",
     exercises: [
-      { type: "cbox", text: "Warm-Up on wall" },
-      { type: "cbox", text: "Max Hang Warm Up" },
+      { type: "checkbox", text: "Warm-Up on wall", for: "warmup" },
+      { type: "checkbox", text: "Max Hang Warm Up", for: "hang-warmup" },
       {
-        type: "cbox-tooltip",
-        text: "Max Hangs",
+        type: "checkbox",
+        text: "Max Hangs *",
+        for: "hangs",
         tooltext: "4 sets: 8 seconds on, 52 seconds off with weight",
+        rangetext: "How many did you complete? ",
+        inputtext: "How much weight did you use?",
       },
-      { type: "range", text: "How many did you complete?" },
-      { type: "input", text: "How much weight did you use" },
       {
-        type: "cbox-tooltip",
-        text: "Campus Board",
+        type: "checkbox",
+        text: "Campus Board *",
+        for: "campus",
         tooltext: "6 sets: 4 laddering, 2 skipping",
+        rangetext: "How many did you complete? ",
       },
-      { type: "range", text: "How many did you complete?" },
-      { type: "cbox", text: "Project Bouldering" },
+      { type: "checkbox", text: "Project Bouldering" },
       {
         type: "input",
         text: "What is the difficulty of your hardest project? (V-scale)",
       },
-      { type: "cbox", text: "Limit Bouldering" },
-      { type: "cbox-tooltip", text: "Front Lever", tooltext: "4 x 10 seconds" },
-      { type: "cbox", text: "Cool Down" },
+      { type: "checkbox", text: "Limit Bouldering" },
+      {
+        type: "checkbox",
+        text: "Front Lever *",
+        tooltext: "4 x 10 seconds",
+        rangetext: "How many did you complete? ",
+      },
+      { type: "checkbox", text: "Cool Down" },
     ],
   },
   even: {
     category: "Strength Training",
-    exercises: [{ type: "cbox", text: "First one bro" }],
+    exercises: [{ type: "checkbox", text: "First one bro" }],
   },
   rest: {
     category: "Rest Day",
@@ -105,11 +112,95 @@ function createWorkout(user, workouts) {
   let workoutType = document.getElementById("workoutType");
   workoutType.innerText += ` ${user.progress} | ${workouts[day].category}`;
 
+  let parent = document.getElementById("workout");
+
   for (w of workouts[day].exercises) {
-    console.log(w);
-    let parent = document.getElementById("workout");
-    console.log(parent.innerText);
+    // console.log(w);
+
+    let row = document.createElement("li");
+    let rangeul = document.createElement("ul");
+
+    console.log(w.type);
+    if (w.type === "checkbox") {
+      let label = createInput(w);
+
+      if (w.tooltext) {
+        let div = createToolTip(w, label);
+        label.appendChild(div);
+        if (w.rangetext) {
+          let li = createNumberInput(w, rangeul, w.rangetext, "range");
+          rangeul.append(li);
+        }
+        if (w.inputtext) {
+          let li = createNumberInput(w, rangeul, w.inputtext, "number");
+          rangeul.append(li);
+        }
+      } else {
+        label.innerHTML += w.text;
+      }
+
+      row.append(label);
+      if (rangeul) {
+        row.appendChild(rangeul);
+      }
+
+      parent.append(row);
+      console.log(label);
+    }
   }
+}
+
+function createInput(w) {
+  let label = document.createElement("label");
+  label.setAttribute("class", "form-control");
+  label.setAttribute("for", w.for);
+
+  let input = document.createElement("input");
+  input.setAttribute("type", "checkbox");
+  input.setAttribute("id", w.for);
+  input.setAttribute("name", w.for);
+
+  label.appendChild(input);
+
+  return label;
+}
+
+function createToolTip(w, label) {
+  label.children[0].setAttribute("class", "tooltip");
+  let div = document.createElement("div");
+  div.setAttribute("class", "tooltip");
+  div.textContent = w.text;
+
+  let span = document.createElement("span");
+  span.setAttribute("class", "tooltiptext");
+  span.textContent = w.tooltext;
+  div.appendChild(span);
+
+  console.log(w.text);
+  return div;
+}
+
+function createNumberInput(w, rangeul, text, type) {
+  rangeul.setAttribute("class", "wk-details");
+  let li = document.createElement("li");
+  let label = document.createElement("label");
+  label.textContent = text;
+
+  let input = document.createElement("input");
+  input.setAttribute("type", type);
+  input.setAttribute("min", "0");
+  input.setAttribute("max", "6");
+
+  li.appendChild(label);
+  li.appendChild(input);
+
+  return li;
+}
+
+function updateDay() {
+  userData.progress += 1;
+  populateUserData(userData);
+  createWorkout(userData, workouts);
 }
 
 getDate();
