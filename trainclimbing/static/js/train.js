@@ -51,7 +51,27 @@ const workouts = {
   },
   even: {
     category: "Strength Training",
-    exercises: [{ type: "checkbox", text: "First one bro" }],
+    exercises: [
+      { type: "checkbox", text: "Warm Up" },
+      {
+        type: "checkbox",
+        text: "Bench Press *",
+        tooltext: "3 x 8",
+        inputtext: "How much weight did you use? ",
+      },
+      {
+        type: "checkbox",
+        text: "Tricep Extensions *",
+        tooltext: "3 x 10 on cable machine",
+        inputtext: "How much weight did you use?",
+      },
+      {
+        type: "checkbox",
+        text: "Shoulder Press *",
+        tooltext: "3 x 8",
+        inputtext: "How much weight did you use?",
+      },
+    ],
   },
   rest: {
     category: "Rest Day",
