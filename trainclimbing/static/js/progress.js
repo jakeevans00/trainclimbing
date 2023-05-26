@@ -43,5 +43,3 @@ function populateUserData(user) {
     }
   }
 }
-
-populateUserData(userData);

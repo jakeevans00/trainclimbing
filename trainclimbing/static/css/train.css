@@ -193,6 +193,14 @@ input[type="range"]::-moz-range-thumb {
   height: 2rem;
   width: 1rem;
 }
+
+input[type="text"] {
+  background-color: white;
+  width: 100%;
+  border-radius: var(--border-radius);
+  padding: 5px 10px;
+}
+
 .tooltip {
   position: relative;
   display: inline-block;
@@ -472,4 +480,43 @@ input[type="range"]::-moz-range-thumb {
   .nav-item a {
     display: none;
   }
+}
+
+.chat {
+  height: 300px;
+  width: 60%;
+  background: var(--clr-card-border);
+  border-radius: var(--border-radius);
+}
+
+.msg-area {
+  height: 230px;
+  width: 90%;
+  background: white;
+  margin-inline: auto;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+}
+
+.msg {
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: rgb(211, 210, 210);
+  margin-left: 10px;
+  width: 50%;
+}
+.input-area {
+  height: 70px;
+  width: 90%;
+  margin-top: 15px;
+  margin-inline: auto;
+}
+
+.msg.user {
+  position: relative;
+  background: var(--clr-link);
+  margin-left: 48%;
 }
