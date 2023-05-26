@@ -12,30 +12,6 @@ const months = [
   "November",
   "December",
 ];
-let userData = {
-  userName: localStorage.getItem("userName"),
-  userAge: 22,
-  userHeight: 67,
-  userWeight: 130,
-  hardestSend: 8,
-  progress: 1,
-  pastWorkouts: [
-    {
-      day: 1,
-      hangsCompleted: 2,
-      hangWeight: 5,
-      campusCompleted: 2,
-      frontLeverCompleted: 1,
-    },
-    {
-      day: 2,
-      hangsCompleted: 3,
-      hangWeight: 10,
-      campusCompleted: 4,
-      frontLeverCompleted: 2,
-    },
-  ],
-};
 
 const workouts = {
   odd: {
@@ -95,7 +71,6 @@ function getDate() {
 function populateUserData(user) {
   let grade = document.getElementsByClassName("welcomeUser")[0];
   let name = localStorage.getItem("userName");
-  console.log(name);
   grade.innerText += ` ${name}`;
 
   let project = document.getElementById("projectGrade");
@@ -103,7 +78,7 @@ function populateUserData(user) {
 
   let progressBar = document.getElementsByClassName("progressBar")[0];
   progressBar.innerHTML = `<label for="progress">Current Progress</label>
-  <progress id="progress" max="4" value="${user.progress}"></progress>`;
+  <progress id="progress" max="20" value="${user.progress}"></progress>`;
 }
 
 function createWorkout(user, workouts) {
@@ -115,12 +90,9 @@ function createWorkout(user, workouts) {
   let parent = document.getElementById("workout");
 
   for (w of workouts[day].exercises) {
-    // console.log(w);
-
     let row = document.createElement("li");
     let rangeul = document.createElement("ul");
 
-    console.log(w.type);
     if (w.type === "checkbox") {
       let label = createInput(w);
 
@@ -145,7 +117,6 @@ function createWorkout(user, workouts) {
       }
 
       parent.append(row);
-      console.log(label);
     }
   }
 }
@@ -176,7 +147,6 @@ function createToolTip(w, label) {
   span.textContent = w.tooltext;
   div.appendChild(span);
 
-  console.log(w.text);
   return div;
 }
 
@@ -198,13 +168,27 @@ function createNumberInput(w, rangeul, text, type) {
 }
 
 function updateDay() {
-  userData.progress += 1;
-  populateUserData(userData);
-  createWorkout(userData, workouts);
+  const json = localStorage.getItem("user");
+  let user = JSON.parse(json);
+  console.log("In updateDAy");
+
+  user.progress += 1;
+  let jsonUser = JSON.stringify(user);
+  localStorage.setItem("user", jsonUser);
+  createWorkout(user, workouts);
+
+  let jsonEntry = localStorage.getItem("entry");
+  let entry = JSON.parse(jsonEntry);
+  entry++;
+  localStorage.setItem("entry", entry);
 }
 
+const json = localStorage.getItem("user");
+let user = JSON.parse(json);
+
+const entryJson = localStorage.getItem("entry");
+let entry = JSON.parse(entryJson);
+
 getDate();
-
-populateUserData(userData);
-
-createWorkout(userData, workouts);
+populateUserData(user);
+createWorkout(user, workouts);
