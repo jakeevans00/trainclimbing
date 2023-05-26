@@ -10,4 +10,6 @@
 - **[Deployment: DNS, Caddy, Etc](notes/deployment.md)**
 - **[HTML](notes/html.md)**
 - **[CSS](notes/css.md)**
-- **[JavaScript](notes/javascript.md)**
+- **[JavaScript Basics](notes/javascript.md)**
+- **[Javascript DOM, Scope, and Modules](notes/jsscope.md)**
+- **[Javascript Promises, Async, Await](notes/jsasync.md)**
