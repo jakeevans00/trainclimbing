@@ -71,6 +71,18 @@ const workouts = {
         tooltext: "3 x 8",
         inputtext: "How much weight did you use?",
       },
+      {
+        type: "checkbox",
+        text: "Lat Pull-downs *",
+        tooltext: "3 x 10",
+        inputtext: "How much weight did you use?",
+      },
+      {
+        type: "checkbox",
+        text: "Barbell Squats *",
+        tooltext: "3 x 10",
+        inputtext: "How much weight did you use?",
+      },
     ],
   },
   rest: {
@@ -98,7 +110,7 @@ function populateUserData(user) {
 
   let progressBar = document.getElementsByClassName("progressBar")[0];
   progressBar.innerHTML = `<label for="progress">Current Progress</label>
-  <progress id="progress" max="20" value="${user.progress}"></progress>`;
+  <progress id="progress" max="10" value="${user.progress}"></progress>`;
 }
 
 function createWorkout(user, workouts) {
@@ -150,6 +162,7 @@ function createInput(w) {
   input.setAttribute("type", "checkbox");
   input.setAttribute("id", w.for);
   input.setAttribute("name", w.for);
+  // input.setAttribute("required", "");
 
   label.appendChild(input);
 

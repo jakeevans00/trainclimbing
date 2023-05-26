@@ -63,3 +63,13 @@ For this deliverable, I styled the basic application using only custom CSS (slow
 - Application elements - Elements are styled with muted, earthy colors. Content is contained in cards with good color balance.
 - Application text - Text is styled according to function (header, subheader, body text, etc). 2 fonts.
 - Application images - Found on the "View Progress", "Beta Spray", and "About" Pages.
+
+## JS Deliverable:
+
+For this deliverable, I added the Javascript necessary to the site fully functional.
+
+- Simon and Startup app Javascript is deployed to production environment.
+- User input at login is stored in local storage and displayed throughout all web pages.
+- User data is stored in local storage. Updates to user information are made possible by getting (parsing) and setting (stringifying) data from local storage.
+- Code for future chat is still in progress, but incorporates setTimeout functions
+- Training plans can be completed and submitted, which updates progress and the current daily workout on the front-end.
