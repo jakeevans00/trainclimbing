@@ -112,6 +112,21 @@ function populateUserData(user) {
   progressBar.innerHTML = `<label for="progress">Current Progress</label>
   <progress id="progress" max="10" value="${user.progress}"></progress>`;
 }
+async function loadWorkout() {
+  try {
+    const response = fetch("/api/workouts");
+    workouts = (await response).json();
+
+    localStorage.setItem("workouts", JSON.stringify(workouts));
+  } catch {
+    const workoutsText = localStorage.getItem("workouts");
+    if (workoutsText) {
+      workouts = JSON.parse(workoutsText);
+    }
+  }
+
+  createWorkout(user, workouts);
+}
 
 function createWorkout(user, workouts) {
   let day = user.progress % 2 === 1 ? "odd" : "even";
@@ -224,4 +239,4 @@ let entry = JSON.parse(entryJson);
 
 getDate();
 populateUserData(user);
-createWorkout(user, workouts);
+loadWorkout();

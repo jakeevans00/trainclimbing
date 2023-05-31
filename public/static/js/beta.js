@@ -13,6 +13,17 @@ async function createComment(text) {
   setTimeout(() => parent.appendChild(child), 3000);
 }
 
+function createUserComment(text) {
+  const parent = document.getElementsByClassName("msg-area")[0];
+  let child = document.createElement("div");
+  child.classList.add("msg", "user");
+  let commentText = document.getElementById("userComments").value;
+  if (commentText) {
+    child.textContent = commentText;
+    parent.insertBefore(child, parent.children[0]);
+  }
+}
+
 let chat = "Placeholder";
 setInterval(() => {
   let parent = document.querySelector(".msg-area");

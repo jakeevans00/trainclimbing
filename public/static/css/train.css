@@ -510,13 +510,23 @@ input[type="text"] {
 }
 .input-area {
   height: 70px;
-  width: 90%;
+  width: 65%;
   margin-top: 15px;
-  margin-inline: auto;
+  margin-left: 5%;
 }
 
 .msg.user {
   position: relative;
   background: var(--clr-link);
   margin-left: 48%;
+}
+
+.btn-chat {
+  width: 10%;
+  display: inline;
+  position: absolute;
+  margin-left: 7px;
+  margin-top: -5px;
+  height: 35px;
+  text-align: center;
 }
