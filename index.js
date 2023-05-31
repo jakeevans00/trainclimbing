@@ -14,6 +14,19 @@ app.get("/workouts", (_req, res) => {
   res.send(workouts);
 });
 
+//Endpoints for users aren't currently called by frontend. This won't really be useful until DB is configured.
+app.get("/user/:userName", (req, res) => {
+  res.send({ name: req.params.userName });
+});
+
+app.put("/user/:userName", (req, res) => {
+  res.send({ update: req.params.userName });
+});
+
+app.delete("/user/:userName", (req, res) => {
+  res.send({ delete: req.params.userName });
+});
+
 app.use((_req, res) => {
   res.sendFile("index.html", { root: "public" });
 });

@@ -73,3 +73,13 @@ For this deliverable, I added the Javascript necessary to the site fully functio
 - User data is stored in local storage. Updates to user information are made possible by getting (parsing) and setting (stringifying) data from local storage.
 - Code for future chat is still in progress, but incorporates setTimeout functions
 - Training plans can be completed and submitted, which updates progress and the current daily workout on the front-end.
+
+## Service Deliverable:
+
+For this deliverable, I converted my application into an HTTP web service using Node.js and Express. My frontend and backend are managed by these technologies.
+
+- Node.js/Express HTTP service - Complete!
+- Static Middleware for frontend - Accomplished through built-in middleware functions `app.use(express.static('public'));`
+- Calls to third-party endpoints - I added an inspirational quote to the progress.html page, which calls the quotable.io api.
+- Backend service endpoint: Endpoint for getting workouts and getting/updating/deleting user info from the server. Workouts are stored there, in place of a database (Hard-coded for now). Currently, the frontend only calls the get workouts endpoint.
+- Frontend calls service endpoint - Accomplished in the train.html page to generate workouts based on user's current progress.
