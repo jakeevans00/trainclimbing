@@ -23,33 +23,41 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
+  /* border: red 1px solid; */
 }
 
 body {
-  font-family: eloquia;
+  font-family: Eloquia;
   height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+h2 {
+  color: var(--clr-header);
+  font-size: 4rem;
+  font-family: Eloquia;
+  margin: -5px;
+}
+
+.view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 main {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-footer {
-  flex: 0 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--clr-sidebar-background);
-  color: white;
+form {
+  margin: 2rem;
 }
-
 input {
+  display: block;
   width: 100%;
   text-align: start;
   box-sizing: border-box;
@@ -59,16 +67,6 @@ input {
   box-shadow: none;
   border: rgba(75, 98, 76, 0.305) solid 2px;
   font-family: eloquia;
-}
-h1 {
-  color: var(--clr-header);
-  font-size: 6rem;
-  font-family: Eloquia;
-  margin: -5px;
-}
-
-input:focus {
-  background-color: rgba(240, 214, 248, 0.11);
 }
 a {
   color: var(--clr-link);
@@ -93,70 +91,20 @@ a:hover {
 .button:hover {
   background-color: var(--clr-theme-hover);
 }
-.view {
-  display: flex;
-  flex-direction: column;
-
-  /* background: url(../img/climb3.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; */
-}
-
-.footer-text {
-  font-size: small;
-  padding: 0 0.5rem;
-}
-
-.nav-list {
-  margin: 0;
-  padding: 0.75rem 0;
-  border-radius: var(--border-radius);
-  display: flex;
-  justify-content: end;
-  align-items: center;
-}
-
-.nav-item {
-  list-style: none;
-  margin-right: 2rem;
-}
-
-.nav-item a {
-  text-decoration: none;
-  color: black;
-  transition: all 200ms ease-in;
-}
-
-.nav-item:nth-child(1) {
-  margin-right: auto;
-  margin-left: 2rem;
-}
-
-@font-face {
-  font-family: Eloquia;
-  src: url(../fonts/eloquia.otf);
-}
-
-.hide {
-  display: none;
-}
-
-.mtn {
-  color: var(--clr-link);
-}
-
-.subtext {
-  color: #cfafc6;
-}
-
 .info {
   margin-top: 0.5rem;
   font-family: Overpass;
 }
 
+.footer {
+  flex: 0;
+}
 @font-face {
   font-family: Overpass;
   src: url(../fonts/overpass.ttf);
+}
+
+@font-face {
+  font-family: Eloquia;
+  src: url(../fonts/eloquia.otf);
 }

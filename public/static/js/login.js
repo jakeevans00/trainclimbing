@@ -3,10 +3,19 @@ function login() {
   localStorage.setItem("userName", nameEl.value);
   window.location.href = "train.html";
 
+  //getUser(user);
   createUser();
 
   let entry = 1;
   localStorage.setItem("entry", entry);
+}
+
+function signup() {
+  const nameEl = document.querySelector("#name");
+  localStorage.setItem("userName", nameEl.value);
+  window.location.href = "train.html";
+
+  createUser();
 }
 
 function createUser() {
@@ -17,22 +26,6 @@ function createUser() {
     userWeight: 130,
     hardestSend: 8,
     progress: 1,
-    pastWorkouts: [
-      {
-        day: 1,
-        hangsCompleted: 2,
-        hangWeight: 5,
-        campusCompleted: 2,
-        frontLeverCompleted: 1,
-      },
-      {
-        day: 2,
-        hangsCompleted: 3,
-        hangWeight: 10,
-        campusCompleted: 4,
-        frontLeverCompleted: 2,
-      },
-    ],
   };
 
   let jsonUser = JSON.stringify(userData);

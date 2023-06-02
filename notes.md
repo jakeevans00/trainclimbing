@@ -13,3 +13,5 @@
 - **[JavaScript Basics](notes/javascript.md)**
 - **[Javascript DOM, Scope, and Modules](notes/jsscope.md)**
 - **[Javascript Promises, Async, Await](notes/jsasync.md)**
+- **[Node.js](notes/nodejs.md)**
+- **[Web Services](notes/webservice.md)**
