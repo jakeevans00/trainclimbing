@@ -68,6 +68,7 @@ async function getData() {
     return entries;
   } catch {
     console.log("no data available");
+    return;
   }
 }
 
@@ -84,7 +85,7 @@ async function createChart() {
   let h3 = document.createElement("h3");
   h3.classList.add("card-header");
   h3.style.color = "#91768a";
-  if (data) {
+  if (data.length >= 1) {
     h3.textContent = "History";
     let text = document.createElement("div");
     text.classList.add("info");
@@ -94,12 +95,48 @@ async function createChart() {
 
     let hangs = [];
     let projects = [];
+    let bench = [];
+    let tris = [];
+    let shoulders = [];
+    let lats = [];
+    let squats = [];
+
     for (let i = 0; i < climbData.length; i++) {
       hangs.push(climbData[i].exercises[0][0].value);
       projects.push(climbData[i].exercises[0][1].value);
     }
-    text.textContent = `Hangs Weight History: ${hangs} -- Project Hisory: ${projects}`;
-    header.append(text);
+    for (let i = 0; i < strengthData.length; i++) {
+      bench.push(strengthData[i].exercises[0][0].value);
+      tris.push(strengthData[i].exercises[0][1].value);
+      shoulders.push(strengthData[i].exercises[0][2].value);
+      lats.push(strengthData[i].exercises[0][3].value);
+      squats.push(strengthData[i].exercises[0][4].value);
+    }
+
+    let hText = document.createElement("p");
+    hText.innerText = `Hangs Weight History: ${hangs}`;
+    let pText = document.createElement("p");
+    pText.innerText = `Project Grade History (V-Scale): ${projects}`;
+    let bText = document.createElement("p");
+    bText.innerText = `Bench History: ${bench}`;
+    let tText = document.createElement("p");
+    tText.innerText = `Tricep History: ${tris}`;
+    let sText = document.createElement("p");
+    sText.innerText = `Shoulder History: ${shoulders}`;
+    let lText = document.createElement("p");
+    lText.innerText = `Lat History: ${lats}`;
+    let sqText = document.createElement("p");
+    sqText.innerText = `Squat History: ${squats}`;
+
+    text.appendChild(hText);
+    text.appendChild(pText);
+    text.appendChild(bText);
+    text.appendChild(tText);
+    text.appendChild(sText);
+    text.appendChild(lText);
+    text.appendChild(sqText);
+
+    header.appendChild(text);
   } else {
     h3.innerText = "No data 😔 Complete a workout to see progress!";
   }
