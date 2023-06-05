@@ -83,3 +83,11 @@ For this deliverable, I converted my application into an HTTP web service using 
 - Calls to third-party endpoints - I added an inspirational quote to the progress.html page, which calls the quotable.io api.
 - Backend service endpoint- Endpoint for getting workouts and getting/updating/deleting user info from the server. Workouts are stored there, in place of a database (Hard-coded for now). Currently, the frontend only calls the get workouts endpoint.
 - Frontend calls service endpoint - Accomplished in the train.html page to generate workouts based on user's current progress.
+
+## Database Deliverable:
+
+For this deliverable I created a database in MongoDB which is used to store and retrieve data.
+
+- MongoDB Atlas Database created - done!
+- Endpoints for data - Endpoints for workout and entry getting/setting are being used by application.
+- Stores data in MongoDB - done!
