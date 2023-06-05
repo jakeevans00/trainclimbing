@@ -58,5 +58,55 @@ function getQuote() {
     });
 }
 
+async function getData() {
+  let entries = [];
+  try {
+    const response = await fetch(
+      `/api/entries/${localStorage.getItem("userName")}`
+    );
+    entries = await response.json();
+    return entries;
+  } catch {
+    console.log("no data available");
+  }
+}
+
+async function createChart() {
+  let parent = document.getElementById("chart");
+  const data = await getData();
+
+  parent.classList.add("cards");
+
+  let container = document.createElement("div");
+  container.classList.add("card-single", "card-single--workout");
+  let header = document.createElement("div");
+  header.classList.add("card-header");
+  let h3 = document.createElement("h3");
+  h3.classList.add("card-header");
+  h3.style.color = "#91768a";
+  if (data) {
+    h3.textContent = "History";
+    let text = document.createElement("div");
+    text.classList.add("info");
+
+    let climbData = data.filter((x) => x.type === "climbing");
+    let strengthData = data.filter((x) => x.type === "strength");
+
+    let hangs = [];
+    let projects = [];
+    for (let i = 0; i < climbData.length; i++) {
+      hangs.push(climbData[i].exercises[0][0].value);
+      projects.push(climbData[i].exercises[0][1].value);
+    }
+    text.textContent = `Hangs Weight History: ${hangs} -- Project Hisory: ${projects}`;
+    header.append(text);
+  } else {
+    h3.innerText = "No data 😔 Complete a workout to see progress!";
+  }
+  header.insertBefore(h3, header.firstChild);
+  container.appendChild(header);
+  parent.appendChild(container);
+}
 populateUserData(userData);
 getQuote();
+createChart();

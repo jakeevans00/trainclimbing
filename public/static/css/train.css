@@ -33,9 +33,9 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  text-decoration: none;
   margin: 0;
   padding: 0;
-  text-decoration: none;
 }
 
 body {
@@ -199,6 +199,10 @@ input[type="text"] {
   width: 100%;
   border-radius: var(--border-radius);
   padding: 5px 10px;
+}
+
+input[type="number"] {
+  padding: 0 2px;
 }
 
 .tooltip {
@@ -529,4 +533,9 @@ input[type="text"] {
   margin-top: -5px;
   height: 35px;
   text-align: center;
+}
+
+div#lineChart {
+  height: 400px;
+  width: 400px;
 }

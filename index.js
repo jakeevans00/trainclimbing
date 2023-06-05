@@ -9,16 +9,26 @@ app.use(express.static("public"));
 
 //Code to use apiRouter
 var apiRouter = express.Router();
-app.use("/api", apiRouter);
+app.use(`/api`, apiRouter);
 
 //Endpoint to get workouts from database
-app.get("/workouts", async (_req, res) => {
+apiRouter.get("/workouts", async (_req, res) => {
   const workouts = await DB.getWorkouts();
   res.send(workouts);
 });
 
+//Endpoints to add and get workout entries for specific users
+apiRouter.post("/entry", async (req, res) => {
+  DB.addEntry(req.body);
+});
+
+apiRouter.get("/entries/:userName", async (req, res) => {
+  const entries = await DB.getEntries(req.params.userName);
+  res.send(entries);
+});
+
 //Endpoints for users aren't currently called by frontend. This won't really be useful until DB is configured.
-app.get("/user/:userName", (req, res) => {
+apiRouter.get("/user/:userName", (req, res) => {
   res.send({ name: req.params.userName });
 });
 
@@ -37,7 +47,7 @@ app.use((_req, res) => {
 app.listen(PORT, () => console.log(`Connection active at port ${PORT}`));
 
 //I only ran this code once, to populate the database with workouts (commented out below)
-// DB.addWorkouts(workouts);
+//workouts.forEach(workout => DB.addWorkout(workout));
 
 // const workouts = [
 //   {

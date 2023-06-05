@@ -6,6 +6,7 @@ const client = new MongoClient(url);
 const db = client.db("startup");
 const userCollection = db.collection("user");
 const workoutCollection = db.collection("workout");
+const entryCollection = db.collection("entry");
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -18,8 +19,8 @@ const workoutCollection = db.collection("workout");
   process.exit(1);
 });
 
-async function addWorkouts(workouts) {
-  const result = await workoutCollection.insertMany(workouts);
+async function addWorkout(workout) {
+  const result = await workoutCollection.insertOne(workout);
   return result;
 }
 
@@ -28,7 +29,24 @@ function getWorkouts() {
   return cursor.toArray();
 }
 
+async function addEntry(entry) {
+  const result = await entryCollection.insertOne(entry);
+  return result;
+}
+
+async function addEntry(entry) {
+  const result = await entryCollection.insertOne(entry);
+  return result;
+}
+
+function getEntries(username) {
+  const cursor = entryCollection.find({ user: username });
+  return cursor.toArray();
+}
+
 module.exports = {
-  addWorkouts,
+  addWorkout,
   getWorkouts,
+  addEntry,
+  getEntries,
 };
