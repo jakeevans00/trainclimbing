@@ -56,7 +56,6 @@ apiRouter.post("/auth/create", async (req, res) => {
     });
     return;
   }
-  res.status(401).send({ msg: "Unauthorized" });
 });
 
 apiRouter.post("/auth/login", async (req, res) => {

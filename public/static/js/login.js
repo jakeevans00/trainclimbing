@@ -60,7 +60,6 @@ async function createUser() {
     localStorage.setItem("user", jsonUser);
   } else {
     document.getElementsByClassName("warning")[0].style.display = "block";
-    console.log("couldn't sign in ");
   }
 }
 
