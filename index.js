@@ -25,17 +25,7 @@ apiRouter.get("/workouts", async (_req, res) => {
   res.send(workouts);
 });
 
-//Endpoints to add and get workout entries for specific users
-apiRouter.post("/entry", async (req, res) => {
-  DB.addEntry(req.body);
-});
-
-apiRouter.get("/entries/:userName", async (req, res) => {
-  const entries = await DB.getEntries(req.params.userName);
-  res.send(entries);
-});
-
-//Endpoints for users aren't currently called by frontend. This won't really be useful until DB is configured.
+//Endpoint to create a new user
 apiRouter.post("/auth/create", async (req, res) => {
   if (await DB.getUser(req.body.userName)) {
     res.status(409).send({ msg: "Existing User" });
@@ -58,12 +48,14 @@ apiRouter.post("/auth/create", async (req, res) => {
   }
 });
 
+//Endpoint to authenticate an existing user
 apiRouter.post("/auth/login", async (req, res) => {
   const user = await DB.getUser(req.body.userName);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       setAuthCookie(res, user.token);
-      return res.send({ id: user._id });
+      res.send({ id: user._id });
+      return;
     }
   }
   res.status(401).send({ msg: "Unauthorized" });
@@ -75,18 +67,47 @@ apiRouter.delete("/auth/logout", (_req, res) => {
   res.status(204).end();
 });
 
-apiRouter.get("user/:userName", async (req, res) => {
+//Endpoints to add and get workout entries for specific users
+apiRouter.post("/entry", async (req, res) => {
+  DB.addEntry(req.body);
+});
+
+apiRouter.put("/update/:userName", async (req, res) => {
+  if (await DB.updateUser(req.params.userName)) {
+    res.status(204);
+    return;
+  } else {
+    res.send({ msg: "Not able to update user" });
+  }
+});
+
+//Endpoint to get all entries made by a user
+apiRouter.get("/entries/:userName", async (req, res) => {
+  const entries = await DB.getEntries(req.params.userName);
+  res.send(entries);
+});
+//Endpoint to get info from DB about a user (used at login)
+apiRouter.get("/user/:userName", async (req, res) => {
   const user = await DB.getUser(req.params.userName);
   if (user) {
     const token = req?.cookies.token;
-    res.send({ email: user.userName, authenticated: token === user.token });
+    res.send({ user: user, authenticated: token === user.token });
     return;
   }
   res.status(404).send({ msg: "Unknown" });
 });
 
-app.put("/user/:userName", (req, res) => {
-  res.send({ update: req.params.userName });
+var secureApiRouter = express.Router();
+apiRouter.use(secureApiRouter);
+
+secureApiRouter.use(async (req, res, next) => {
+  authToken = req.cookies[authCookieName];
+  const user = await DB.getUserByToken;
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: "Unauthorized" });
+  }
 });
 
 app.use((_req, res) => {

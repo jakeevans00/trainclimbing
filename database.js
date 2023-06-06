@@ -45,7 +45,14 @@ function getEntries(username) {
   const cursor = entryCollection.find({ user: username });
   return cursor.toArray();
 }
+async function updateUser(username) {
+  const result = await userCollection.updateOne(
+    { userName: username },
+    { $inc: { progress: 1 } }
+  );
 
+  return result;
+}
 function getUser(username) {
   return userCollection.findOne({ userName: username });
 }
@@ -87,4 +94,5 @@ module.exports = {
   getUser,
   getUserByToken,
   createUser,
+  updateUser,
 };

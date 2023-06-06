@@ -186,22 +186,28 @@ async function createEntry(user) {
   }
 }
 
-function updateDay() {
+async function updateDay() {
   const json = localStorage.getItem("user");
   let user = JSON.parse(json);
-  console.log("In updateDay");
 
   user.progress += 1;
+
   let jsonUser = JSON.stringify(user);
   localStorage.setItem("user", jsonUser);
-
-  createEntry(user);
-  createWorkout(user, workouts);
-
-  let jsonEntry = localStorage.getItem("entry");
-  let entry = JSON.parse(jsonEntry);
-  entry++;
-  localStorage.setItem("entry", entry);
+  try {
+    const response = await fetch(`/api/update/${user.userName}`, {
+      method: "put",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(user),
+    })
+      .then(() => createEntry(user))
+      .then(() => createWorkout);
+  } catch {
+    console.log("couldn't update user data");
+  } finally {
+    createEntry(user);
+    createWorkout(user, workouts);
+  }
 }
 
 const json = localStorage.getItem("user");

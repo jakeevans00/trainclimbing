@@ -14,9 +14,20 @@ async function loginUser() {
 
   if (response.ok) {
     localStorage.setItem("userName", userName);
+    const dbUser = await getUser(userName);
+    let userData = {
+      userName: dbUser.user.userName,
+      userAge: dbUser.user.age,
+      userHeight: dbUser.user.height,
+      userWeight: dbUser.user.weigth,
+      hardestSend: dbUser.user.hardestSend,
+      progress: dbUser.user.progress,
+    };
+    let jsonUser = JSON.stringify(userData);
+    localStorage.setItem("user", jsonUser);
     window.location.href = "pages/train.html";
   } else {
-    document.getElementsByClassName("warning")[0].style.display = "block";
+    validate();
   }
 }
 async function createUser() {
@@ -34,7 +45,7 @@ async function createUser() {
       password: password,
       age: age,
       height: height,
-      weigth: weigth,
+      weight: weigth,
       hardestSend: hardestSend,
       progress: progress,
     }),
@@ -59,15 +70,31 @@ async function createUser() {
     let jsonUser = JSON.stringify(userData);
     localStorage.setItem("user", jsonUser);
   } else {
-    document.getElementsByClassName("warning")[0].style.display = "block";
+    validate();
   }
 }
 
-function login() {
-  const nameEl = document.querySelector("#name");
-  localStorage.setItem("userName", nameEl.value);
-  window.location.href = "train.html";
+async function getUser(username) {
+  const response = await fetch(`/api/user/${username}`);
+  const user = await response.json();
+  return user;
+}
 
-  //getUser(user);
-  createUser();
+async function validate() {
+  let e = document.getElementsByClassName("warning")[0];
+
+  if (e.style.display === "block") {
+    e.style.marginLeft = "8px";
+    setTimeout(function () {
+      e.style.marginLeft = "0px";
+    }, 100);
+    setTimeout(function () {
+      e.style.marginLeft = "8px";
+    }, 200);
+    setTimeout(function () {
+      e.style.marginLeft = "0px";
+    }, 300);
+  } else {
+    document.getElementsByClassName("warning")[0].style.display = "block";
+  }
 }
