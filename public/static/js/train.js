@@ -28,7 +28,8 @@ function populateUserData(user) {
   grade.innerText += ` ${name}`;
 
   let project = document.getElementById("projectGrade");
-  project.innerText += `${user.hardestSend + 1}`;
+  let projectGrade = parseInt(user.hardestSend);
+  project.innerText += `${projectGrade + 1}`;
 
   let progressBar = document.getElementsByClassName("progressBar")[0];
   progressBar.innerHTML = `<label for="progress">Current Progress</label>

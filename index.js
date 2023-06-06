@@ -64,8 +64,7 @@ apiRouter.post("/auth/login", async (req, res) => {
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       setAuthCookie(res, user.token);
-      res.send({ id: user._id });
-      return;
+      return res.send({ id: user._id });
     }
   }
   res.status(401).send({ msg: "Unauthorized" });
