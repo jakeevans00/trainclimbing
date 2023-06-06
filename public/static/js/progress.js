@@ -1,11 +1,5 @@
-let userData = {
-  userName: localStorage.getItem("userName"),
-  userAge: 22,
-  userHeight: 67,
-  userWeight: 130,
-  hardestSend: 8,
-  progressbar: 3,
-};
+let jsonUser = localStorage.getItem("user");
+let userData = JSON.parse(jsonUser);
 
 function populateUserData(user) {
   let grade = document.getElementsByClassName("welcomeUser")[0];

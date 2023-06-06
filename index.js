@@ -2,10 +2,18 @@ const express = require("express");
 const app = express();
 const PORT = process.argv.length > 2 ? process.argv[2] : 4000;
 const DB = require("./database.js");
+const cookieParser = require("cookie-parser");
+const bcrypt = require("bcrypt");
+
+const authCookieName = "token";
 
 app.use(express.json());
 
+app.use(cookieParser());
+
 app.use(express.static("public"));
+
+app.set("trust proxy", true);
 
 //Code to use apiRouter
 var apiRouter = express.Router();
@@ -28,21 +36,72 @@ apiRouter.get("/entries/:userName", async (req, res) => {
 });
 
 //Endpoints for users aren't currently called by frontend. This won't really be useful until DB is configured.
-apiRouter.get("/user/:userName", (req, res) => {
-  res.send({ name: req.params.userName });
+apiRouter.post("/auth/create", async (req, res) => {
+  if (await DB.getUser(req.body.userName)) {
+    res.status(409).send({ msg: "Existing User" });
+  } else {
+    const user = await DB.createUser(
+      req.body.userName,
+      req.body.password,
+      req.body.age,
+      req.body.height,
+      req.body.weight,
+      req.body.hardestSend,
+      req.body.progress
+    );
+
+    setAuthCookie(res, user.token);
+    res.send({
+      id: user._id,
+    });
+    return;
+  }
+  res.status(401).send({ msg: "Unauthorized" });
+});
+
+apiRouter.post("/auth/login", async (req, res) => {
+  const user = await DB.getUser(req.body.userName);
+  if (user) {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      setAuthCookie(res, user.token);
+      res.send({ id: user._id });
+      return;
+    }
+  }
+  res.status(401).send({ msg: "Unauthorized" });
+});
+
+//Deletes token if stored in cookie
+apiRouter.delete("/auth/logout", (_req, res) => {
+  res.clearCookie(authCookieName);
+  res.status(204).end();
+});
+
+apiRouter.get("user/:userName", async (req, res) => {
+  const user = await DB.getUser(req.params.userName);
+  if (user) {
+    const token = req?.cookies.token;
+    res.send({ email: user.userName, authenticated: token === user.token });
+    return;
+  }
+  res.status(404).send({ msg: "Unknown" });
 });
 
 app.put("/user/:userName", (req, res) => {
   res.send({ update: req.params.userName });
 });
 
-app.delete("/user/:userName", (req, res) => {
-  res.send({ delete: req.params.userName });
-});
-
 app.use((_req, res) => {
   res.sendFile("index.html", { root: "public" });
 });
+
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    secure: true,
+    httpOnly: true,
+    sameSite: "strict",
+  });
+}
 
 app.listen(PORT, () => console.log(`Connection active at port ${PORT}`));
 

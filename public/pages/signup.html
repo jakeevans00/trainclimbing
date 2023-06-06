@@ -24,12 +24,16 @@
       <h2><span class="las la-mountain mtn"></span></h2>
       <h2>Sign Up!</h2>
 
-      <form method="get" action="train.html">
+      <div>
+        <p class="warning">Sorry, username taken!</p>
+      </div>
+
+      <form method="post">
         <label for="username">Username</label>
         <input
           class="input-text"
           type="text"
-          id="name"
+          id="su_name"
           placeholder="Enter Username"
         />
 
@@ -37,39 +41,49 @@
         <input
           class="input-text"
           type="password"
-          id="password"
+          id="su_password"
           placeholder="Enter Password"
         />
-        <label for="username">Age</label>
+        <label for="age">Age</label>
         <input
           class="input-text"
-          type="text"
-          id="name"
+          type="number"
+          id="su_age"
           placeholder="Enter Age"
+          min="0"
+          max="130"
         />
-        <label for="username">Height</label>
+        <label for="height">Height (inches)</label>
         <input
           class="input-text"
-          type="text"
-          id="name"
+          type="number"
+          id="su_height"
           placeholder="Enter Height"
+          min="0"
+          max="82"
         />
-        <label for="username">Weight</label>
+        <label for="weight">Weight (lbs)</label>
         <input
           class="input-text"
-          type="text"
-          id="name"
+          type="number"
+          id="su_weight"
           placeholder="Enter Weight"
+          min="0"
+          max="500"
         />
-        <label for="username">Hardest Send</label>
+        <label for="username">Hardest Send (V-scale)</label>
         <input
           class="input-text"
-          type="text"
-          id="name"
+          type="number"
+          id="su_send"
           placeholder="Enter Hardest Send"
+          min="0"
+          max="17"
         />
 
-        <button class="button" type="submit" onclick="signup()">Sign-up</button>
+        <button class="button" type="button" onclick="createUser()">
+          Sign-up
+        </button>
         <p class="info">
           Already have an account? <a href="../index.html">Log in!</a>
         </p>

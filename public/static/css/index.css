@@ -160,3 +160,9 @@ a:hover {
   font-family: Overpass;
   src: url(../fonts/overpass.ttf);
 }
+
+.warning {
+  display: none;
+  color: red;
+  font-family: Overpass;
+}

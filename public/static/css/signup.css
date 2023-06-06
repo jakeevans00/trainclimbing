@@ -108,3 +108,9 @@ a:hover {
   font-family: Eloquia;
   src: url(../fonts/eloquia.otf);
 }
+
+.warning {
+  display: none;
+  color: red;
+  font-family: Overpass;
+}

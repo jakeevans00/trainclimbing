@@ -1,5 +1,7 @@
 const { MongoClient } = require("mongodb");
 const config = require("./dbConfig.json");
+const uuid = require("uuid");
+const bcrypt = require("bcrypt");
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
@@ -44,9 +46,45 @@ function getEntries(username) {
   return cursor.toArray();
 }
 
+function getUser(username) {
+  return userCollection.findOne({ userName: username });
+}
+function getUserByToken(token) {
+  return userCollection.findOne({ token: token });
+}
+
+async function createUser(
+  username,
+  password,
+  age,
+  height,
+  weight,
+  hardestSend,
+  progress
+) {
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  const user = {
+    userName: username,
+    password: passwordHash,
+    age: age,
+    height: height,
+    weight: weight,
+    hardestSend: hardestSend,
+    progress: progress,
+    token: uuid.v4(),
+  };
+  await userCollection.insertOne(user);
+
+  return user;
+}
+
 module.exports = {
   addWorkout,
   getWorkouts,
   addEntry,
   getEntries,
+  getUser,
+  getUserByToken,
+  createUser,
 };
