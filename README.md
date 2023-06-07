@@ -91,3 +91,12 @@ For this deliverable I created a database in MongoDB which is used to store and 
 - MongoDB Atlas Database created - done!
 - Endpoints for data - Endpoints for workout and entry getting/setting are being used by application.
 - Stores data in MongoDB - done!
+
+## Login Deliverable:
+
+For this deliverable, I created the login/registration functionality for my app.
+
+- User Registration - Users can create accounts which are stored in the database
+- Existing Users - Users can be verified using data stored in database (username & password)
+- Credentials stored in MongoDB - done!
+- Restricted functionality based on authentication - Only authenticated users can create new entries in the database (uses secureApiRouter)

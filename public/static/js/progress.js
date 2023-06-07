@@ -142,6 +142,14 @@ async function createChart() {
   container.appendChild(header);
   parent.appendChild(container);
 }
+
+function logout() {
+  localStorage.removeItem("userName");
+  fetch(`/api/auth/logout`, {
+    method: "delete",
+  }).then(() => (window.location.href = "/"));
+}
+
 populateUserData(userData);
 getQuote();
 createChart();

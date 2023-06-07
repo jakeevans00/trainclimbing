@@ -60,9 +60,7 @@
             </li>
             <li class="nav-item">
               <a href="../index.html">
-                <button class="btn-primary" action="../index.html">
-                  Logout
-                </button>
+                <button class="btn-primary" onclick="logout()">Logout</button>
               </a>
             </li>
           </ul>
@@ -115,14 +113,20 @@
                 <div class="msg">Hey what's up</div>
                 <div class="msg">Not much you?</div>
                 <div class="msg user">Lolol</div>
-            
               </div>
               <div class="input-area">
-                <input id="userComments" class="chat-input" type="text" placeholder="Share your thoughts!">
-                <div class="btn-primary btn-chat" onclick="createUserComment()">Submit</div>
+                <input
+                  id="userComments"
+                  class="chat-input"
+                  type="text"
+                  placeholder="Share your thoughts!"
+                />
+                <div class="btn-primary btn-chat" onclick="createUserComment()">
+                  Submit
+                </div>
               </div>
             </div>
-          
+          </div>
         </section>
       </main>
 

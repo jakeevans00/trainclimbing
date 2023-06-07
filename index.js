@@ -69,9 +69,8 @@ apiRouter.delete("/auth/logout", (_req, res) => {
 
 //Endpoints to add and get workout entries for specific users
 apiRouter.post("/entry", async (req, res) => {
-  DB.addEntry(req.body);
-  res.send({ msg: "Added to database" });
-  return;
+  const entry = await DB.addEntry(req.body);
+  return res.send({ msg: "Added to database" });
 });
 
 apiRouter.put("/update/:userName", async (req, res) => {
@@ -82,11 +81,6 @@ apiRouter.put("/update/:userName", async (req, res) => {
   }
 });
 
-//Endpoint to get all entries made by a user
-apiRouter.get("/entries/:userName", async (req, res) => {
-  const entries = await DB.getEntries(req.params.userName);
-  res.send(entries);
-});
 //Endpoint to get info from DB about a user (used at login)
 apiRouter.get("/user/:userName", async (req, res) => {
   const user = await DB.getUser(req.params.userName);
@@ -109,6 +103,12 @@ secureApiRouter.use(async (req, res, next) => {
   } else {
     res.status(401).send({ msg: "Unauthorized" });
   }
+});
+
+//Endpoint to get all entries made by a user
+secureApiRouter.get("/entries/:userName", async (req, res) => {
+  const entries = await DB.getEntries(req.params.userName);
+  res.send(entries);
 });
 
 app.use((_req, res) => {

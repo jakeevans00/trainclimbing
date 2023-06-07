@@ -13,8 +13,6 @@ const months = [
   "December",
 ];
 
-console.log("test");
-
 function getDate() {
   let date = new Date();
   let el = document.getElementById("date");
@@ -171,7 +169,7 @@ async function createEntry(user) {
   const form = document.getElementById("workout");
   const e = form.getElementsByTagName("input");
 
-  let type = user.progress % 2 === 1 ? "strength" : "climbing";
+  let type = user.progress % 2 === 0 ? "strength" : "climbing";
   let completed = [];
   let entry = {
     user: localStorage.getItem("userName"),
@@ -205,36 +203,51 @@ async function createEntry(user) {
     } catch {
       console.log("Couldn't upload entry");
     }
+  } else {
+    return false;
   }
-  return;
+  return true;
 }
 
 async function updateDay() {
-  let curr_json = localStorage.getItem("user");
-  let curr_user = JSON.parse(curr_json);
+  const userName = localStorage.getItem("userName");
+  const dbUser = await getUser(userName);
 
-  const jsonSession = localStorage.getItem("session");
-  let session = JSON.parse(jsonSession);
-  session += 1;
-  const updateSession = JSON.stringify(session);
-  localStorage.setItem("session", updateSession);
+  let userData = {
+    userName: dbUser.user.userName,
+    userAge: dbUser.user.age,
+    userHeight: dbUser.user.height,
+    userWeight: dbUser.user.weigth,
+    hardestSend: dbUser.user.hardestSend,
+    progress: dbUser.user.progress,
+  };
+  if (validateForm() === true) {
+    let curr_json = localStorage.getItem("user");
+    let curr_user = JSON.parse(curr_json);
 
-  curr_user.progress += 1;
+    const jsonSession = localStorage.getItem("session");
+    let session = JSON.parse(jsonSession);
+    session += 1;
+    const updateSession = JSON.stringify(session);
+    localStorage.setItem("session", updateSession);
 
-  let jsonUser = JSON.stringify(curr_user);
-  localStorage.setItem("user", jsonUser);
-  try {
-    const response = await fetch(`/api/update/${user.userName}`, {
-      method: "put",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(user),
-    });
-    const responses = await response.json();
-  } catch {
-    console.log("couldn't update user data");
-  } finally {
-    createEntry(user);
-    loadWorkout();
+    curr_user.progress += 1;
+
+    let jsonUser = JSON.stringify(curr_user);
+    localStorage.setItem("user", jsonUser);
+    try {
+      const response = await fetch(`/api/update/${user.userName}`, {
+        method: "put",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(user),
+      });
+      const responses = await response.json();
+    } catch {
+      console.log("couldn't update user data");
+    } finally {
+      createEntry(userData);
+      loadWorkout();
+    }
   }
 }
 
@@ -244,12 +257,39 @@ async function getUser(username) {
   return user;
 }
 
+function validateForm() {
+  const form = document.getElementById("workout");
+  const e = form.getElementsByTagName("input");
+  let completed = [];
+
+  for (let i = 1; i < e.length; i++) {
+    if (e[i].type === "number") {
+      const e_id = e[i].id;
+      const e_value = e[i].value;
+      if (e_value) {
+        const item = { id: e_id, value: e_value };
+        completed.push(item);
+      }
+    }
+  }
+
+  if (completed.length > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function logout() {
+  localStorage.removeItem("userName");
+  fetch(`/api/auth/logout`, {
+    method: "delete",
+  }).then(() => (window.location.href = "/"));
+}
+
 let json = localStorage.getItem("user");
 let user = JSON.parse(json);
 
 getDate();
 populateUserData(user);
-
-if (localStorage.getItem("session") == 1) {
-  loadWorkout();
-}
+loadWorkout();

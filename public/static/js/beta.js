@@ -24,6 +24,13 @@ function createUserComment(text) {
   }
 }
 
+function logout() {
+  localStorage.removeItem("userName");
+  fetch(`/api/auth/logout`, {
+    method: "delete",
+  }).then(() => (window.location.href = "/"));
+}
+
 let chat = "Placeholder";
 setInterval(() => {
   let parent = document.querySelector(".msg-area");
