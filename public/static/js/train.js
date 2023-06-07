@@ -13,6 +13,8 @@ const months = [
   "December",
 ];
 
+console.log("test");
+
 function getDate() {
   let date = new Date();
   let el = document.getElementById("date");
@@ -36,6 +38,7 @@ function populateUserData(user) {
   <progress id="progress" max="10" value="${user.progress}"></progress>`;
 }
 async function loadWorkout() {
+  const userName = localStorage.getItem("userName");
   let workouts = [];
   try {
     const response = await fetch("/api/workouts");
@@ -48,15 +51,34 @@ async function loadWorkout() {
       workouts = JSON.parse(workoutsText);
     }
   }
-
-  createWorkout(user, workouts);
+  clearWorkout();
+  const dbUser = await getUser(userName);
+  let userData = {
+    userName: dbUser.user.userName,
+    userAge: dbUser.user.age,
+    userHeight: dbUser.user.height,
+    userWeight: dbUser.user.weigth,
+    hardestSend: dbUser.user.hardestSend,
+    progress: dbUser.user.progress,
+  };
+  createWorkout(userData, workouts);
   return workouts;
+}
+
+function clearWorkout() {
+  const parent = document.getElementById("workout");
+  const header = document.getElementById("workoutType");
+  header.removeChild(header.firstChild);
+
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
 }
 
 function createWorkout(user, workouts) {
   let workoutType = document.getElementById("workoutType");
   let workoutSelector = (user.progress + 1) % 2;
-  workoutType.innerText += ` ${user.progress} | ${workouts[workoutSelector].category}`;
+  workoutType.innerText += `Day ${user.progress} | ${workouts[workoutSelector].category}`;
 
   let parent = document.getElementById("workout");
 
@@ -170,7 +192,7 @@ async function createEntry(user) {
 
   entry.exercises.push(completed);
 
-  if (entry) {
+  if (entry.exercises[0].length > 0) {
     try {
       const response = await fetch("/api/entry", {
         method: "POST",
@@ -184,35 +206,50 @@ async function createEntry(user) {
       console.log("Couldn't upload entry");
     }
   }
+  return;
 }
 
 async function updateDay() {
-  const json = localStorage.getItem("user");
-  let user = JSON.parse(json);
+  let curr_json = localStorage.getItem("user");
+  let curr_user = JSON.parse(curr_json);
 
-  user.progress += 1;
+  const jsonSession = localStorage.getItem("session");
+  let session = JSON.parse(jsonSession);
+  session += 1;
+  const updateSession = JSON.stringify(session);
+  localStorage.setItem("session", updateSession);
 
-  let jsonUser = JSON.stringify(user);
+  curr_user.progress += 1;
+
+  let jsonUser = JSON.stringify(curr_user);
   localStorage.setItem("user", jsonUser);
   try {
     const response = await fetch(`/api/update/${user.userName}`, {
       method: "put",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),
-    })
-      .then(() => createEntry(user))
-      .then(() => createWorkout);
+    });
+    const responses = await response.json();
   } catch {
     console.log("couldn't update user data");
   } finally {
     createEntry(user);
-    createWorkout(user, workouts);
+    loadWorkout();
   }
 }
 
-const json = localStorage.getItem("user");
+async function getUser(username) {
+  const response = await fetch(`/api/user/${username}`);
+  const user = await response.json();
+  return user;
+}
+
+let json = localStorage.getItem("user");
 let user = JSON.parse(json);
 
 getDate();
 populateUserData(user);
-loadWorkout();
+
+if (localStorage.getItem("session") == 1) {
+  loadWorkout();
+}

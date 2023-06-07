@@ -96,15 +96,19 @@ async function createChart() {
     let squats = [];
 
     for (let i = 0; i < climbData.length; i++) {
-      hangs.push(climbData[i].exercises[0][0].value);
-      projects.push(climbData[i].exercises[0][1].value);
+      try {
+        hangs.push(climbData[i].exercises[0][0].value);
+        projects.push(climbData[i].exercises[0][1].value);
+      } catch {}
     }
     for (let i = 0; i < strengthData.length; i++) {
-      bench.push(strengthData[i].exercises[0][0].value);
-      tris.push(strengthData[i].exercises[0][1].value);
-      shoulders.push(strengthData[i].exercises[0][2].value);
-      lats.push(strengthData[i].exercises[0][3].value);
-      squats.push(strengthData[i].exercises[0][4].value);
+      try {
+        bench.push(strengthData[i].exercises[0][0].value);
+        tris.push(strengthData[i].exercises[0][1].value);
+        shoulders.push(strengthData[i].exercises[0][2].value);
+        lats.push(strengthData[i].exercises[0][3].value);
+        squats.push(strengthData[i].exercises[0][4].value);
+      } catch {}
     }
 
     let hText = document.createElement("p");

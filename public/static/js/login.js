@@ -25,6 +25,9 @@ async function loginUser() {
     };
     let jsonUser = JSON.stringify(userData);
     localStorage.setItem("user", jsonUser);
+    let firstTime = 1;
+    let jsonFirst = JSON.stringify(firstTime);
+    localStorage.setItem("session", jsonFirst);
     window.location.href = "pages/train.html";
   } else {
     validate();

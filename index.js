@@ -70,12 +70,13 @@ apiRouter.delete("/auth/logout", (_req, res) => {
 //Endpoints to add and get workout entries for specific users
 apiRouter.post("/entry", async (req, res) => {
   DB.addEntry(req.body);
+  res.send({ msg: "Added to database" });
+  return;
 });
 
 apiRouter.put("/update/:userName", async (req, res) => {
   if (await DB.updateUser(req.params.userName)) {
-    res.status(204);
-    return;
+    res.send({ msg: "Able to update" });
   } else {
     res.send({ msg: "Not able to update user" });
   }
