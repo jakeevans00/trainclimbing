@@ -10,13 +10,14 @@ async function createComment(text) {
   let child = document.createElement("div");
   child.setAttribute("class", "msg");
   child.textContent = text;
-  setTimeout(() => parent.appendChild(child), 3000);
+  child.textContent = chat;
+  parent.insertBefore(child, parent.children[0]);
 }
 
 function createUserComment(text) {
   const parent = document.getElementsByClassName("msg-area")[0];
   let child = document.createElement("div");
-  child.classList.add("msg", "user");
+  child.classList.add("user");
   let commentText = document.getElementById("userComments").value;
   if (commentText) {
     child.textContent = commentText;
@@ -31,14 +32,14 @@ function logout() {
   }).then(() => (window.location.href = "/"));
 }
 
-let chat = "Placeholder";
-setInterval(() => {
-  let parent = document.querySelector(".msg-area");
-  let child = document.createElement("div");
-  child.setAttribute("class", "msg");
-  child.textContent = chat;
-  parent.insertBefore(child, parent.children[0]);
-}, 5000);
+// let chat = "Placeholder";
+// setInterval(() => {
+//   let parent = document.querySelector(".msg-area");
+//   let child = document.createElement("div");
+//   child.setAttribute("class", "msg");
+//   child.textContent = chat;
+//   parent.insertBefore(child, parent.children[0]);
+// }, 5000);
 
 //Functionality for Web Socket
 // Adjust the webSocket protocol to what is being used for HTTP
@@ -47,30 +48,36 @@ const socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
 
 // Display that we have opened the webSocket
 socket.onopen = (event) => {
-  appendMsg("system", "websocket", "connected");
+  appendMsg("msg", "websocket", "connected");
 };
 
 // Display messages we receive from our friends
 socket.onmessage = async (event) => {
   const text = await event.data.text();
   const chat = JSON.parse(text);
-  appendMsg("friend", chat.name, chat.msg);
+  let cls;
+  if (chat.name === JSON.parse(localStorage.getItem("userName"))) {
+    cls = "user";
+  } else {
+    cls = "msg";
+  }
+  appendMsg(cls, chat.name, chat.msg);
 };
 
 // If the webSocket is closed then disable the interface
 socket.onclose = (event) => {
-  appendMsg("system", "websocket", "disconnected");
-  document.querySelector("#name-controls").disabled = true;
-  document.querySelector("#chat-controls").disabled = true;
+  appendMsg("msg", "websocket", "disconnected");
+  // document.querySelector("#name-controls").disabled = true;
+  // document.querySelector("#chat-controls").disabled = true;
 };
 
 // Send a message over the webSocket
 function sendMessage() {
-  const msgEl = document.querySelector("#new-msg");
+  const msgEl = document.querySelector("#userComments");
   const msg = msgEl.value;
   if (!!msg) {
-    appendMsg("me", "me", msg);
-    const name = document.querySelector("#my-name").value;
+    appendMsg("user", "Me", msg);
+    const name = localStorage.getItem("userName");
     socket.send(`{"name":"${name}", "msg":"${msg}"}`);
     msgEl.value = "";
   }
@@ -78,23 +85,24 @@ function sendMessage() {
 
 // Create one long list of messages
 function appendMsg(cls, from, msg) {
-  const chatText = document.querySelector("#chat-text");
-  chatText.innerHTML =
-    `<div><span class="${cls}">${from}</span>: ${msg}</div>` +
-    chatText.innerHTML;
+  const parent = document.querySelector(".msg-area");
+  let child = document.createElement("div");
+  child.setAttribute("class", `${cls}`);
+  child.innerText = `${from}: ${msg}`;
+  parent.insertBefore(child, parent.children[0]);
 }
 
 // Send message on enter keystroke
-const input = document.querySelector("#new-msg");
-input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    sendMessage();
-  }
-});
+// const input = document.querySelector("#new-msg");
+// input.addEventListener("keydown", (e) => {
+//   if (e.key === "Enter") {
+//     sendMessage();
+//   }
+// });
 
 // Disable chat if no name provided
-const chatControls = document.querySelector("#chat-controls");
-const myName = document.querySelector("#my-name");
-myName.addEventListener("keyup", (e) => {
-  chatControls.disabled = myName.value === "";
-});
+// const chatControls = document.querySelector(".msg-area");
+// const myName = JSON.parse(localStorage.getItem("userName"));
+// myName.addEventListener("keyup", (e) => {
+//   chatControls.disabled = myName.value === "";
+// });

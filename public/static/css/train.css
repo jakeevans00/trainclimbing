@@ -501,7 +501,7 @@ input[type="number"] {
   margin-top: 15px;
   display: flex;
   flex-direction: column-reverse;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .msg {
@@ -519,7 +519,13 @@ input[type="number"] {
   margin-left: 5%;
 }
 
-.msg.user {
+.user {
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: rgb(211, 210, 210);
+  margin-left: 10px;
+  width: 50%;
   position: relative;
   background: var(--clr-link);
   margin-left: 48%;
