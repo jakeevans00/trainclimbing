@@ -530,6 +530,14 @@ input[type="number"] {
   background: var(--clr-link);
   margin-left: 48%;
 }
+.system {
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: rgb(178, 219, 192);
+  margin-left: 10px;
+  width: 50%;
+}
 
 .btn-chat {
   width: 10%;
