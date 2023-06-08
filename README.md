@@ -100,3 +100,12 @@ For this deliverable, I created the login/registration functionality for my app.
 - Existing Users - Users can be verified using data stored in database (username & password)
 - Credentials stored in MongoDB - done!
 - Restricted functionality based on authentication - Only authenticated users can create new entries in the database (uses secureApiRouter)
+
+## Web Socket Deliverable:
+
+For this deliverable, I used the WebSocket protocol to implement a chat service on my application.
+
+- Backend listens for WebSocket connection - Done!
+- Frontend makes WebSocket connection - Done!
+- Data sent over WebSocket connection - Done!
+- WebSocket data displayed - Users can chat and see each others messages!
