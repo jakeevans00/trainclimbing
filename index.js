@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
-const PORT = process.argv.length > 2 ? process.argv[2] : 4000;
 const DB = require("./database.js");
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcrypt");
+const { peerProxy } = require("./peerProxy.js");
 
 const authCookieName = "token";
+
+const PORT = process.argv.length > 2 ? process.argv[2] : 4000;
 
 app.use(express.json());
 
@@ -124,6 +126,8 @@ function setAuthCookie(res, authToken) {
 }
 
 app.listen(PORT, () => console.log(`Connection active at port ${PORT}`));
+
+peerProxy(httpService);
 
 //I only ran this code once, to populate the database with workouts (commented out below)
 //workouts.forEach(workout => DB.addWorkout(workout));
