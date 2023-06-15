@@ -66,24 +66,21 @@ async function getData() {
   }
 }
 
-async function createChart() {
-  let parent = document.getElementById("chart");
+function logout() {
+  localStorage.removeItem("userName");
+  fetch(`/api/auth/logout`, {
+    method: "delete",
+  }).then(() => (window.location.href = "/"));
+}
+
+populateUserData(userData);
+getQuote();
+
+document.addEventListener("DOMContentLoaded", async function () {
   const data = await getData();
+  const parent = document.getElementById("chart");
 
-  parent.classList.add("cards");
-
-  let container = document.createElement("div");
-  container.classList.add("card-single", "card-single--workout");
-  let header = document.createElement("div");
-  header.classList.add("card-header");
-  let h3 = document.createElement("h3");
-  h3.classList.add("card-header");
-  h3.style.color = "#91768a";
   if (data.length >= 1) {
-    h3.textContent = "History";
-    let text = document.createElement("div");
-    text.classList.add("info");
-
     let climbData = data.filter((x) => x.type === "climbing");
     let strengthData = data.filter((x) => x.type === "strength");
 
@@ -101,6 +98,7 @@ async function createChart() {
         projects.push(climbData[i].exercises[0][1].value);
       } catch {}
     }
+
     for (let i = 0; i < strengthData.length; i++) {
       try {
         bench.push(strengthData[i].exercises[0][0].value);
@@ -111,45 +109,106 @@ async function createChart() {
       } catch {}
     }
 
-    let hText = document.createElement("p");
-    hText.innerText = `Hangs Weight History: ${hangs}`;
-    let pText = document.createElement("p");
-    pText.innerText = `Project Grade History (V-Scale): ${projects}`;
-    let bText = document.createElement("p");
-    bText.innerText = `Bench History: ${bench}`;
-    let tText = document.createElement("p");
-    tText.innerText = `Tricep History: ${tris}`;
-    let sText = document.createElement("p");
-    sText.innerText = `Shoulder History: ${shoulders}`;
-    let lText = document.createElement("p");
-    lText.innerText = `Lat History: ${lats}`;
-    let sqText = document.createElement("p");
-    sqText.innerText = `Squat History: ${squats}`;
+    const labels = Array.from(
+      { length: hangs.length },
+      (_, index) => `Day ${index + 1}`
+    );
+    const strengthlabels = Array.from(
+      { length: bench.length },
+      (_, index) => `Day ${index + 2}`
+    );
 
-    text.appendChild(hText);
-    text.appendChild(pText);
-    text.appendChild(bText);
-    text.appendChild(tText);
-    text.appendChild(sText);
-    text.appendChild(lText);
-    text.appendChild(sqText);
+    const projData = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Project Grade",
+          data: projects,
+          borderColor: "#F28482",
+          tension: 0.1,
+        },
+      ],
+    };
 
-    header.appendChild(text);
+    const otherData = {
+      labels: strengthlabels,
+      datasets: [
+        {
+          label: "Hangs",
+          data: hangs,
+          borderColor: "#335C67",
+          tension: 0.1,
+        },
+        {
+          label: "Bench",
+          data: bench,
+          borderColor: "#9E2A2B",
+          tension: 0.1,
+        },
+        {
+          label: "Triceps",
+          data: tris,
+          borderColor: "#AB92BF",
+          tension: 0.1,
+        },
+        {
+          label: "Shoulders",
+          data: shoulders,
+          borderColor: "#80DED9",
+          tension: 0.1,
+        },
+        {
+          label: "Lat Pulls",
+          data: lats,
+          borderColor: "#4C061D",
+          tension: 0.1,
+        },
+        {
+          label: "Squats",
+          data: squats,
+          borderColor: "#A59132",
+          tension: 0.1,
+        },
+      ],
+    };
+
+    const ctx = document.getElementById("myChart").getContext("2d");
+    new Chart(ctx, {
+      type: "line",
+      data: projData,
+      options: {
+        scales: {
+          x: {
+            display: true,
+            grid: {
+              display: false,
+            },
+            barPercentage: 0.5,
+          },
+          y: {
+            display: true,
+            suggestedMin: 0,
+            suggestedMax: 17,
+          },
+        },
+      },
+    });
+
+    const ctz = document.getElementById("myChart2").getContext("2d");
+    new Chart(ctz, {
+      type: "line",
+      data: otherData,
+      options: {
+        scales: {
+          y: {
+            display: true,
+            suggestedMin: 0,
+            suggestedMax: 300,
+          },
+        },
+      },
+    });
   } else {
-    h3.innerText = "No data 😔 Complete a workout to see progress!";
+    parent.textContent = "No data 😔 Complete a workout to see progress!";
   }
-  header.insertBefore(h3, header.firstChild);
-  container.appendChild(header);
-  parent.appendChild(container);
-}
-
-function logout() {
-  localStorage.removeItem("userName");
-  fetch(`/api/auth/logout`, {
-    method: "delete",
-  }).then(() => (window.location.href = "/"));
-}
-
-populateUserData(userData);
-getQuote();
-createChart();
+});
