@@ -7,7 +7,7 @@ View notes from class [here](notes.md)
 
 This web application is built by climbers, for climbers. 🧗‍♂️ Our platform exists to help boulder bros, grade pushers, and crushers everywhere get stronger 💪 and train smarter 🧠. Users create personal accounts, choose from 1 of 2 training plans, and log their daily progress towards personalized goals.
 
-We've all experienced the frustration of hitting a plateau 😔. Usually, this is because we climb without a plan. With [trainclimbing.com](https://trainclimbing.com), now you have one.
+We've all experienced the frustration of hitting a plateau 😔. Usually, this is because we climb without a plan. With [trainclimbing.com](https://startup.trainclimbing.com), now you have one.
 #nohalfsends 🏔️
 
 ### Design:
